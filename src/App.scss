@@ -1,0 +1,78 @@
+// html{
+//   height: 100%;
+// }
+
+body {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  // overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// #root {
+//   font-family: Arial, Helvetica, sans-serif;
+//   font-size: 16px;
+//   font-weight: 200;
+// }
+
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Noto+Sans+JP:wght@100;300;400;500&family=Poppins:wght@100;200;300;400;600;700&family=Roboto:wght@100;300;400;500;700&display=swap");
+
+* {
+  // font-family: 'Poppins', sans-serif;
+  // font-family: "Noto Sans JP", sans-serif;
+  // font-family: Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  
+  // transition: all 0.2s linear;
+}
+
+$font-japanese: "Noto Sans JP", sans-serif;
+$pink: #ff1a1a;
+$blue: #001a66;
+$black: #302851;
+$white: #fff;
+$violet: #b300b3;
+$orange: #ff3300;
+$green: #33cc33;
+$light-pink: #ffeaf4;
+$light-blue: #e9edfb;
+$light-color: #666;
+$light-bg: #f5f5f5;
+$border: 0.1rem solid rgba(0, 0, 0, 0.1);
+$box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+
+@mixin grid($val) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($val, 1fr));
+  gap: 1.5rem;
+}
+
+
+section {
+  padding: 2rem 9%;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 1rem 3rem;
+  background: $light-blue;
+  color: $blue;
+  cursor: pointer;
+  border-radius: .5rem;
+  font-size: 1.7rem;
+
+  &:hover {
+      color: $white;
+      background: $blue;
+  }
+
+}
+

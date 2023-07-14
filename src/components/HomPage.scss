@@ -1,0 +1,104 @@
+$font-japanese: "Noto Sans JP", sans-serif;
+$pink: #ff1a1a;
+$blue: #001a66;
+$black: #302851;
+$white: #fff;
+$violet: #b300b3;
+$orange: #ff3300;
+$green: #33cc33;
+$light-pink: #ffeaf4;
+$light-blue: #e9edfb;
+$light-color: #666;
+$light-bg: #f5f5f5;
+$border: 0.1rem solid rgba(0, 0, 0, 0.1);
+$box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+
+@mixin grid($val) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($val, 1fr));
+    gap: 1.5rem;
+  }
+
+.home {
+  height: 235px;
+
+  .content {
+    h3 {
+      color: $black;
+      font-size: 2.4rem;
+    }
+  }
+
+  .box-search {
+    position: relative;
+    top: 20px;
+    height: 50px;
+    background-color: #fff;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+      rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    padding: 20px;
+    border-radius: 30px;
+    box-sizing: border-box;
+   
+
+
+    input {
+      flex: 5;
+      height: 40px;
+      border: none;
+      outline: none;
+      font-size: 1.8rem;
+      padding-left: 10px;
+    }
+
+    select {
+      border: none;
+      font-size: 1.5rem;
+      padding: 1rem;
+    }
+
+    span {
+      font-size: 1.5rem;
+      padding: 1rem;
+    }
+  }
+}
+
+.category-container {
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+
+    }
+
+    .category {
+        @include grid(16rem);
+        padding: 0;
+
+        .box {
+            border-radius: 1rem;
+            background: $light-bg;
+            padding: 4rem 3rem;
+            text-align: center;
+
+            &:hover {
+                transform: translateY(-15px);
+                transition: .2s all linear;
+                box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+            }
+
+            img {
+                height: 7rem;
+                margin-bottom: 2rem;
+            }
+
+            h3 {
+                font-size: 1.7rem;
+                color: $black;
+            }
+        }
+    }
+}

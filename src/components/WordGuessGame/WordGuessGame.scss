@@ -1,0 +1,32 @@
+.container {
+  .suggest {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    .answerCorrect {
+      border: solid 1px black;
+      margin-right: 15px;
+      height: 30px;
+      width: 30px;
+      //   padding: 5px;
+      text-align: center;
+      vertical-align: baseline;
+    }
+  }
+
+  .inputText {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    .answerWrong {
+      border: solid 1px black;
+      margin-right: 15px;
+      //   padding: 5px;
+      height: 30px;
+      width: 30px;
+      text-align: center;
+    }
+  }
+}
