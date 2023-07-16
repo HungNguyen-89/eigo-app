@@ -42,54 +42,89 @@ body {
         transition: all 0.5s ease;
         z-index: 10;
 
-        .front {
+        .flashCardFrontSide {
           position: absolute;
           width: 100%;
           height: 100%;
           text-align: center;
-          background: lightblue;
+          background: #6e8cb8;
           backface-visibility: hidden;
           z-index: 10;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          color: white;
+          // box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
 
-          #txtFront {
-            top: 165px;
-            left: 30px;
-            width: 300px;
-            height: 50px;
-            position: absolute;
-            z-index: 10;
-            font-size: 25px;
+          //background-image: linear-gradient(#FFF8DC, #F0FFF0);
+          .wordOfFrontSide {
+            // top: 165px;
+            // left: 30px;
+            // width: 300px;
+            // height: 50px;
+            // position: absolute;
+            // z-index: 10;
+            font-size: 35px;
             font-family: Arial;
+
             font-weight: bold;
+          }
+
+          .phoneticOfWord {
+            font-size: 20px;
           }
         }
 
-        .back {
+        .flashCardBackSide {
           position: absolute;
+        //   display: flex;
+        //  align-items: center;
           width: 100%;
           height: 100%;
-          text-align: center;
+          // text-align: center;
           background: lightblue;
           backface-visibility: hidden;
           z-index: 10;
           transform: rotateY(180deg);
           background: white;
+          display: flex;
+          flex-direction: column;
+          
+          gap:10px;
 
+          .imageBackSide {
+            display: flex;
+            margin-top: 10px;
+            width: 80%;
+            height: 45%;
+            overflow: hidden;
+           justify-content: center;
+           align-items: center;
+
+            img {
+              height: 100%;  
+            }
+
+          }
           .txtBack {
-            top: 235px;
-            left: 20px;
-            width: 300px;
-            height: 50px;
-            position: absolute;
-            z-index: 10;
-            font-size: 25px;
+            font-size: 20px;
             font-family: Arial;
-            font-weight: bold;
+            font-weight: 600;
+          }
+
+          .examplesOfWord{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
           }
 
           .hiddenBack {
             display: none;
           }
+
+        
         }
       }
 
@@ -97,7 +132,7 @@ body {
         transform: rotateY(180deg);
       }
 
-      :checked+.flip-card {
+      :checked + .flip-card {
         transform: rotateY(180deg);
       }
     }

@@ -115,16 +115,26 @@ const FlashCard = () => {
                 className={`flip-card ${activeCard ? "cardFlip" : ""}`}
               >
                 {/*front*/}
-                <div className="front">
-                  <div id="txtFront">{textFront}</div>
+                <div className="flashCardFrontSide">
+                  <div className="wordOfFrontSide">{textFront}</div>
+                  <div className="partOfSpeech">verb</div>
+                  <div className="phoneticOfWord">/ʃeɪk/</div>
                 </div>
                 {/*back*/}
-                <div className="back">
-                  <div id="imageBack"></div>
+                <div className="flashCardBackSide">
+                  <div className="imageBackSide">
+                    <img
+                      src="https://live.staticflickr.com/65535/53045740005_ff9d5d0d9f_n.jpg"
+                      alt=""
+                    />
+                  </div>
                   <div className={`txtBack ${activeBack ? "hiddenBack" : ""}`}>
                     {textBack}
                   </div>
-                  <img src="https://live.staticflickr.com/65535/53045740005_ff9d5d0d9f_n.jpg" />
+                  <div className="examplesOfWord">
+                    Example:
+                    <div className="example_1">abc</div>
+                  </div>
                 </div>
               </div>
               {/* </label> */}
