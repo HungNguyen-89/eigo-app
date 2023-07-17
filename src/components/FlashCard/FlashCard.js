@@ -122,18 +122,33 @@ const FlashCard = () => {
                 </div>
                 {/*back*/}
                 <div className="flashCardBackSide">
-                  <div className="imageBackSide">
-                    <img
-                      src="https://live.staticflickr.com/65535/53045740005_ff9d5d0d9f_n.jpg"
-                      alt=""
-                    />
+                  <div className="upOfBackSide">
+                    <div className="imageBackSide">
+                      <img
+                        src="https://live.staticflickr.com/65535/53045740005_ff9d5d0d9f_n.jpg"
+                        alt=""
+                      />
+                    </div>
+                    <div
+                      className={`txtBack ${activeBack ? "hiddenBack" : ""}`}
+                    >
+                      <div className="definitionOfWord">
+                        a usually tall hollow object made of glass, used for
+                        drinking
+                      </div>
+                      <div className="meaningOfWord">{textBack}</div>
+                    </div>
                   </div>
-                  <div className={`txtBack ${activeBack ? "hiddenBack" : ""}`}>
-                    {textBack}
-                  </div>
-                  <div className="examplesOfWord">
-                    Example:
-                    <div className="example_1">abc</div>
+                  <div className="downOfBackSide">
+                    <div className="examplesOfWordContainer">
+                      <div className="exampleOfTitle">Example:</div>
+                      <div className="exampleOfWordEn">
+                        She is filling her glass
+                      </div>
+                      <div className="exampleOfWordVn">
+                        Cô ấy đang rót đầy cốc của cô ấy
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -142,6 +157,16 @@ const FlashCard = () => {
           </div>
           <div className="buttonPlayContainer">
             <button
+              className="buttonPlay"
+              // onClick={() => Continue()}
+            >
+              <span className="buttonPlay-icon">
+                <TbListNumbers />
+              </span>
+              Back List
+            </button>
+
+            <button
               className={`buttonPlay ${activeNextBtn ? "hiddenBtn" : ""}`}
               onClick={() => Continue()}
             >
@@ -149,15 +174,6 @@ const FlashCard = () => {
                 <TbPlayerTrackNextFilled />
               </span>
               Next
-            </button>
-            <button
-              className={`buttonPlay ${activeNextBtn ? "hiddenBtn" : ""}`}
-              // onClick={() => Continue()}
-            >
-              <span className="buttonPlay-icon">
-                <AiFillSound />
-              </span>
-              Sound
             </button>
 
             <button
@@ -170,13 +186,13 @@ const FlashCard = () => {
               Again
             </button>
             <button
-              className="buttonPlay"
+              className={`buttonPlay ${activeNextBtn ? "hiddenBtn" : ""}`}
               // onClick={() => Continue()}
             >
               <span className="buttonPlay-icon">
-                <TbListNumbers />
+                <AiFillSound />
               </span>
-              Back List
+              Sound
             </button>
           </div>
           <div id="hiddenNumber"></div>

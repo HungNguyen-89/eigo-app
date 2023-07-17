@@ -17,7 +17,7 @@ body {
     margin: auto;
     margin-top: 35px;
     width: 350px;
-    height: 400px;
+    height: 450px;
     position: relative;
     z-index: 10;
 
@@ -79,8 +79,8 @@ body {
 
         .flashCardBackSide {
           position: absolute;
-        //   display: flex;
-        //  align-items: center;
+          //   display: flex;
+          //  align-items: center;
           width: 100%;
           height: 100%;
           // text-align: center;
@@ -91,40 +91,82 @@ body {
           background: white;
           display: flex;
           flex-direction: column;
-          
-          gap:10px;
+          gap: 10px;
 
-          .imageBackSide {
-            display: flex;
-            margin-top: 10px;
-            width: 80%;
-            height: 45%;
-            overflow: hidden;
-           justify-content: center;
-           align-items: center;
-
-            img {
-              height: 100%;  
-            }
-
-          }
-          .txtBack {
-            font-size: 20px;
-            font-family: Arial;
-            font-weight: 600;
-          }
-
-          .examplesOfWord{
+          .upOfBackSide {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
+            gap: 10px;
+            height: 65%;
+            // border: solid black 1px;
+
+            .imageBackSide {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin-top: 10px;
+              width: 80%;
+              height: 75%;
+              overflow: hidden;
+
+              img {
+                height: 100%;
+              }
+            }
+            .txtBack {
+              display: flex;
+              flex-direction: column;
+              //align-items: center;
+              //justify-content: center;
+              word-break: break-word;
+              width: 95%;
+              font-size: 18px;
+              font-family: Arial;
+
+              .definitionOfWord {
+                font-weight: 600;
+              }
+
+              .meaningOfWord {
+                color: red;
+                font-style: italic;
+                font-weight: 600;
+              }
+            }
+          }
+
+          .downOfBackSide {
+            display: flex;
+            flex-direction: column;
+            padding-left: 10px;
+
+            .examplesOfWordContainer {
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+
+              .exampleOfTitle {
+                font-weight: 600;
+                text-decoration: underline;
+                font-size: 18px;
+              }
+
+              .exampleOfWordEn {
+                color: blue;
+                font-size: 18px;
+                //font-style: italic;
+              }
+
+              .exampleOfWordVn {
+                font-style: italic;
+              }
+            }
           }
 
           .hiddenBack {
             display: none;
           }
-
-        
         }
       }
 
@@ -140,7 +182,7 @@ body {
 
   .buttonPlayContainer {
     display: flex;
-    flex-direction: column;
+    //flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: auto;
@@ -162,8 +204,8 @@ body {
       border-radius: 5px;
       text-align: center;
       text-decoration: none;
-      font-size: 16px;
-      width: 145px;
+      font-size: 15px;
+      width: 100px;
       cursor: pointer;
       font-weight: bold;
     }

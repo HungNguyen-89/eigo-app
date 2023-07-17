@@ -18,22 +18,22 @@ const Navbar = ({ handleClickOpen }) => {
     <div className="navbar-container">
       <div className="navbar-logo">
         <img src={Logo} />
-        <p>NIPPON-ZUKAN</p>
+        <p>EIGO-APP</p>
       </div>
-      <div className="navbar-links">
+      {/* <div className="navbar-links">
         {links.map((link) => (
           <div className="navbar-item">
             <p>{link.name}</p>
           </div>
         ))}
-      </div>
+      </div> */}
       <div
         className="popUpBtn"
         onClick={() => {
           handleClickOpen(false);
         }}
       >
-        <TbListSearch size={"3rem"} />
+        <TbListSearch size={"2.2rem"} />
       </div>
     </div>
   );

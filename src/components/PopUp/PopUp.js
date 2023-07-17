@@ -44,12 +44,12 @@ const PopUp = () => {
             <div className="popup-header">
               <div className="popup-navbar-logo">
                 <img src={Logo} />
-                <p>NIPPON-ZUKAN</p>
+                <p>EIGO-APP</p>
               </div>
               <div className="popup-right">
                 <MdOutlineClose
                   className="closeBtnPopUp"
-                  size={"3rem"}
+                  size={"2.2rem"}
                   onClick={closePopup}
                 />
               </div>
