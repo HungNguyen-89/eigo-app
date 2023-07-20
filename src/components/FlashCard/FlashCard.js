@@ -56,10 +56,21 @@ const FlashCard = () => {
     asyncFn();
   }, [id]);
 
+  const [word, setWord] = useState("");
+  const [partOfSpeech, setPartOfSpeech] = useState("");
+  const [phonetic, setPhonetic] = useState("");
+  const [meaning, setMeaning] = useState("");
+  const [example_1, setExample_1] = useState("");
+  const [definitionOfWord, setDefinitionOfWord] = useState("");
+
   useEffect(() => {
     if (randomData.length > 0) {
-      setTextFront(randomData[0].vocabulary);
-      setTextBack(randomData[0].vietnamese);
+      setWord(randomData[0].word);
+      setPartOfSpeech(randomData[0].partOfSpeech);
+      setPhonetic(randomData[0].phonetic);
+      setMeaning(randomData[0].meaning);
+      setExample_1(randomData[0].example_1);
+      setDefinitionOfWord(randomData[0].definitionOfWord);
     }
   }, [loading]);
 
@@ -67,8 +78,6 @@ const FlashCard = () => {
   const [activeBack, setActiveBack] = useState(false);
   const [activeBtn, setActiveBtn] = useState(true);
   const [activeNextBtn, setActiveNextBtn] = useState(false);
-  const [textFront, setTextFront] = useState("");
-  const [textBack, setTextBack] = useState("");
 
   const handleFlip = () => {
     setActiveCard(!activeCard);
@@ -80,25 +89,39 @@ const FlashCard = () => {
     setActiveBack(true);
     if (randomData && randomData.length > 1) {
       randomData.splice(0, 1);
-      setTextFront(randomData[0].vocabulary);
-      setTextBack(randomData[0].vietnamese);
+      setWord(randomData[0].word);
+      setPartOfSpeech(randomData[0].partOfSpeech);
+      setPhonetic(randomData[0].phonetic);
+      setMeaning(randomData[0].meaning);
+      setExample_1(randomData[0].example_1);
+      setDefinitionOfWord(randomData[0].definitionOfWord);
     } else {
       setActiveNextBtn(true);
       setActiveBtn(false);
-      setTextFront("Do you want to again?");
-      setTextBack("");
+      setWord("Do you want to again?");
+      setPartOfSpeech("");
+      setPhonetic("");
+      setMeaning("");
+      setExample_1("");
+      setDefinitionOfWord("");
       setRandomData(getRandomIndexOfArray(dataTest.flashCardData));
     }
     return (
-      <div className="front">
-        <div id="txtFront">{textFront}</div>
+      <div className="flashCardFrontSide">
+        <div className="wordOfFrontSide">{word}</div>
+        <div className="partOfSpeech">{partOfSpeech}</div>
+        <div className="phoneticOfWord">{phonetic}</div>
       </div>
     );
   };
 
   const Repeat = () => {
-    setTextFront(randomData[0].vocabulary);
-    setTextBack(randomData[0].vietnamese);
+    setWord(randomData[0].word);
+    setPartOfSpeech(randomData[0].partOfSpeech);
+    setPhonetic(randomData[0].phonetic);
+    setMeaning(randomData[0].meaning);
+    setExample_1(randomData[0].example_1);
+    setDefinitionOfWord(randomData[0].definitionOfWord);
     setActiveNextBtn(false);
     setActiveBtn(true);
   };
@@ -116,38 +139,33 @@ const FlashCard = () => {
               >
                 {/*front*/}
                 <div className="flashCardFrontSide">
-                  <div className="wordOfFrontSide">{textFront}</div>
-                  <div className="partOfSpeech">verb</div>
-                  <div className="phoneticOfWord">/ʃeɪk/</div>
+                  <div className="wordOfFrontSide">{word}</div>
+                  <div className="partOfSpeech">{partOfSpeech}</div>
+                  <div className="phoneticOfWord">{phonetic}</div>
                 </div>
                 {/*back*/}
                 <div className="flashCardBackSide">
                   <div className="upOfBackSide">
                     <div className="imageBackSide">
                       <img
-                        src="https://live.staticflickr.com/65535/53045740005_ff9d5d0d9f_n.jpg"
+                        src="https://live.staticflickr.com/65535/53059383094_a30793af13_w.jpg"
                         alt=""
                       />
                     </div>
                     <div
                       className={`txtBack ${activeBack ? "hiddenBack" : ""}`}
                     >
-                      <div className="definitionOfWord">
-                        a usually tall hollow object made of glass, used for
-                        drinking
-                      </div>
-                      <div className="meaningOfWord">{textBack}</div>
+                      <div className="definitionOfWord">{definitionOfWord}</div>
+                      <div className="meaningOfWord">{meaning}</div>
                     </div>
                   </div>
                   <div className="downOfBackSide">
                     <div className="examplesOfWordContainer">
                       <div className="exampleOfTitle">Example:</div>
-                      <div className="exampleOfWordEn">
-                        She is filling her glass
-                      </div>
-                      <div className="exampleOfWordVn">
+                      <div className="exampleOfWordEn">{example_1}</div>
+                      {/* <div className="exampleOfWordVn">
                         Cô ấy đang rót đầy cốc của cô ấy
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
