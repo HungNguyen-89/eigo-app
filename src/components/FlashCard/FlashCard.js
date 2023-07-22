@@ -38,13 +38,27 @@ const FlashCard = () => {
   const [dataTest, setDataTest] = useState([]);
   const [loading, setLoading] = useState(false);
   const [randomData, setRandomData] = useState("");
-
+  const [currentCase, setCurrentCase] = useState("");
   const { id } = useParams();
+
+  useEffect(() => {
+    if (id.includes("verb")) {
+      setCurrentCase("verb");
+    } else if (id.includes("n2")) {
+      setCurrentCase(2);
+    } else if (id.includes("n3")) {
+      setCurrentCase(3);
+    } else if (id.includes("n4")) {
+      setCurrentCase(4);
+    } else if (id.includes("n5")) {
+      setCurrentCase(5);
+    }
+  }, [id]);
 
   useEffect(() => {
     const asyncFn = async () => {
       let res = await axios.get(
-        `https://db-eigo-app.onrender.com/flashcards/${id}`
+        `https://db-eigo-app.onrender.com/flashcards-${currentCase}-data/${id}`
       );
       let data = res && res.data ? res.data : [];
       setDataTest(data);
@@ -54,7 +68,7 @@ const FlashCard = () => {
     };
 
     asyncFn();
-  }, [id]);
+  }, [currentCase, id]);
 
   const [word, setWord] = useState("");
   const [partOfSpeech, setPartOfSpeech] = useState("");
@@ -99,11 +113,13 @@ const FlashCard = () => {
       setActiveNextBtn(true);
       setActiveBtn(false);
       setWord("Do you want to again?");
+
       setPartOfSpeech("");
       setPhonetic("");
       setMeaning("");
       setExample_1("");
       setDefinitionOfWord("");
+
       setRandomData(getRandomIndexOfArray(dataTest.flashCardData));
     }
     return (

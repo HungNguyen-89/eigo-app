@@ -14,87 +14,50 @@ const ExamPageSingle = () => {
   const [dataTest, setDataTest] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // useEffect(() => {
-  //   if (id.includes("n1")) {
-  //     setCurrentCase(1);
-  //   } else if (id.includes("n2")) {
-  //     setCurrentCase(2);
-  //   } else if (id.includes("n3")) {
-  //     setCurrentCase(3);
-  //   } else if (id.includes("n4")) {
-  //     setCurrentCase(4);
-  //   } else if (id.includes("n5")) {
-  //     setCurrentCase(5);
-  //   }
-  // }, [id]);
+  useEffect(() => {
+    if (id.includes("verb")) {
+      setCurrentCase("verb");
+    } else if (id.includes("n2")) {
+      setCurrentCase(2);
+    } else if (id.includes("n3")) {
+      setCurrentCase(3);
+    } else if (id.includes("n4")) {
+      setCurrentCase(4);
+    } else if (id.includes("n5")) {
+      setCurrentCase(5);
+    }
+  }, [id]);
 
   useEffect(() => {
     const asyncFn = async () => {
-      let res = await axios.get(`https://db-eigo-app.onrender.com/flashcards`);
+      let res = await axios.get(
+        `https://db-eigo-app.onrender.com/flashcards/${id}`
+      );
       let data = res && res.data ? res.data : [];
       console.log(res.data);
-      setDataTest(data);
+      setDataTest(data.flashCardData);
       setLoading(true);
     };
 
     asyncFn();
   }, [currentCase]);
 
-  // const DATA = [
-  //   { id: 1, link: "/de-thi/de-thi-n1", name: "N1" },
-  //   { id: 2, link: "/de-thi/de-thi-n2", name: "N2" },
-  //   { id: 3, link: "/de-thi/de-thi-n3", name: "N3" },
-  //   { id: 4, link: "/de-thi/de-thi-n4", name: "N4" },
-  //   { id: 5, link: "/de-thi/de-thi-n5", name: "N5" },
-  // ];
-
   return (
     <>
-      {/* <div class="heading-container">
-        <div className="heading">
-          <div className="heading-title">Đề thi</div>
-          <div className="heading-links">
-            {dataTest.map((element, index) => (
-              <Link
-                key={index}
-                to={element.link}
-                className={
-                  currentCase === index + 1
-                    ? "heading-links-item active"
-                    : "heading-links-item"
-                }
-                // onClick={() => {
-                //   currentSelector(element.id);
-                // }}
-              >
-                {element.flashCardName}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div> */}
       {loading ? (
         <>
           <div className="exam-page-single-container">
             <div>
-              {/* <div className="exam-page-single-header">
-                <div className="exam-page-single-title">
-                  <span className="exam-page-single-title-icon">
-                    <VscBook />
-                  </span>
-                  {dataTest.testName}
-                </div>
-              </div> */}
               <div className="exam-page-single-items">
                 {dataTest?.map((content) => (
                   <div className="exam-page-single-item">
                     <div className="exam-page-single-item-name">
-                      {content.flashCardName}
+                      {content.name}
                     </div>
                     <button className="examp-page-single-item-btn">
                       <Link
                         className="heading-links-item"
-                        to={`/flashcards/${content.id}`}
+                        to={`/flashcards/data/${content.link}`}
                       >
                         <span className="heading-links-item-icon">
                           <GiNotebook />

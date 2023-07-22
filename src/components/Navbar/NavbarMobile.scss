@@ -22,13 +22,12 @@
         font-weight: 500;
       }
 
-      .moble-nav-link-arrown{
+      .moble-nav-link-arrown {
         width: 15%;
       }
     }
 
     .mobile-nav-sub-links-container {
-      
       .mobile-nav-sub-links {
         width: 100%;
         list-style-type: none;
@@ -39,17 +38,23 @@
           font-size: 20px;
           color: black;
           display: flex;
-          
-          a{
+
+          a {
             width: 100%;
+            color: black;
+
+            &:hover {
+              color: red;
+            }
           }
         }
       }
     }
-    
+
     .hidden {
       display: none;
     }
+
     .active {
       display: block;
     }

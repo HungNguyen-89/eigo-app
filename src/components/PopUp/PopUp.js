@@ -32,8 +32,8 @@ const PopUp = () => {
             <Route path="/" element={<HomPage />} />
             <Route path="/test/:id" element={<Test />} />
             <Route path="/de-thi/:id" element={<ExamPageAll />} />
-            <Route path="/flashcards" element={<ExamPageSingle />} />
-            <Route path="/flashcards/:id" element={<FlashCard />} />
+            <Route path="/flashcards/:id" element={<ExamPageSingle />} />
+            <Route path="/flashcards/data/:id" element={<FlashCard />} />
             <Route path="/game" element={<WordGuessGame />} />
           </Routes>
           {/* <Footer /> */}

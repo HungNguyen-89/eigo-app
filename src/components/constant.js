@@ -6,8 +6,8 @@ export const routes = [
   },
   {
     name: "Vocabulary",
-    // link: "",
-    subMenu: true,
+    link: "/",
+    subMenu: false,
     subRoutes: [
       {
         name: "Translate sentences",
@@ -22,33 +22,45 @@ export const routes = [
   {
     name: "Flashcard",
     link: "/flashcards",
-    subMenu: false,
-    // subRoutes: [
-    //   {
-    //     name: "Image",
-    //     link: "/ngu-phap/N1",
-    //   },
-    //   {
-    //     name: "N2",
-    //     link: "/ngu-phap/N2",
-    //   },
-    //   {
-    //     name: "N3",
-    //     link: "/ngu-phap/N3",
-    //   },
-    //   {
-    //     name: "N4",
-    //     link: "/ngu-phap/N4",
-    //   },
-    //   {
-    //     name: "N5",
-    //     link: "/ngu-phap/N5",
-    //   },
-    //   {
-    //     name: "JLPTにない文型",
-    //     link: "/ngu-phap/mau-cau-ngoai-JLPT",
-    //   },
-    // ],
+    subMenu: true,
+    subRoutes: [
+      {
+        name: "Verb",
+        link: "/flashcards/verb",
+      },
+      {
+        name: "Adjective",
+        link: "/flashcards/adjective",
+      },
+      {
+        name: "Adverb",
+        link: "/flashcards/adverb",
+      },
+      {
+        name: "Phrasal verbs",
+        link: "/flashcards/phrasal-verbs",
+      },
+      {
+        name: "Conjunction",
+        link: "/flashcards/conjunction",
+      },
+      {
+        name: "Prepositions",
+        link: "/flashcards/prepositions",
+      },
+      {
+        name: "Determiners",
+        link: "/flashcards/determiners",
+      },
+      {
+        name: "Noun",
+        link: "/flashcards/noun",
+      },
+      {
+        name: "Subject",
+        link: "/flashcards/subject",
+      },
+    ],
   },
   {
     name: "Grammar",
