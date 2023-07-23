@@ -17,8 +17,8 @@ const ExamPageSingle = () => {
   useEffect(() => {
     if (id.includes("verb")) {
       setCurrentCase("verb");
-    } else if (id.includes("n2")) {
-      setCurrentCase(2);
+    } else if (id.includes("adv")) {
+      setCurrentCase("adv");
     } else if (id.includes("n3")) {
       setCurrentCase(3);
     } else if (id.includes("n4")) {

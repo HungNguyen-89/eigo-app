@@ -34,7 +34,7 @@ export const routes = [
       },
       {
         name: "Adverb",
-        link: "/flashcards/adverb",
+        link: "/flashcards/adv",
       },
       {
         name: "Phrasal verbs",
