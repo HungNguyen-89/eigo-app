@@ -5,17 +5,17 @@ export const routes = [
     subMenu: false,
   },
   {
-    name: "Vocabulary",
+    name: "Vocabulary (Translate sentences)",
     link: "/",
-    subMenu: false,
+    subMenu: true,
     subRoutes: [
       {
-        name: "Translate sentences",
-        link: "/translate",
+        name: "Verb",
+        link: "/vocabulary-translate-sentences/verb",
       },
       {
-        name: "Describe the pictures",
-        link: "/describe",
+        name: "Adverb",
+        link: "/vocabulary-translate-sentences/adv",
       },
     ],
   },
@@ -28,71 +28,71 @@ export const routes = [
         name: "Verb",
         link: "/flashcards/verb",
       },
-      {
-        name: "Adjective",
-        link: "/flashcards/adjective",
-      },
+      // {
+      //   name: "Adjective",
+      //   link: "/flashcards/adj",
+      // },
       {
         name: "Adverb",
         link: "/flashcards/adv",
       },
-      {
-        name: "Phrasal verbs",
-        link: "/flashcards/phrasal-verbs",
-      },
-      {
-        name: "Conjunction",
-        link: "/flashcards/conjunction",
-      },
-      {
-        name: "Prepositions",
-        link: "/flashcards/prepositions",
-      },
-      {
-        name: "Determiners",
-        link: "/flashcards/determiners",
-      },
-      {
-        name: "Noun",
-        link: "/flashcards/noun",
-      },
-      {
-        name: "Subject",
-        link: "/flashcards/subject",
-      },
+      // {
+      //   name: "Phrasal verbs",
+      //   link: "/flashcards/phrasal-verbs",
+      // },
+      // {
+      //   name: "Conjunction",
+      //   link: "/flashcards/conjunction",
+      // },
+      // {
+      //   name: "Prepositions",
+      //   link: "/flashcards/prepositions",
+      // },
+      // {
+      //   name: "Determiners",
+      //   link: "/flashcards/determiners",
+      // },
+      // {
+      //   name: "Noun",
+      //   link: "/flashcards/noun",
+      // },
+      // {
+      //   name: "Subject",
+      //   link: "/flashcards/subject",
+      // },
     ],
   },
-  {
-    name: "Grammar",
-    link: "/grammar",
-    subMenu: false,
-    subRoutes: [
-      {
-        name: "N1",
-        link: "/de-thi/de-thi-n1",
-      },
-      {
-        name: "N2",
-        link: "/de-thi/de-thi-n2",
-      },
-      {
-        name: "N3",
-        link: "/de-thi/de-thi-n3",
-      },
-      {
-        name: "N4",
-        link: "/de-thi/de-thi-n4",
-      },
-      {
-        name: "N5",
-        link: "/de-thi/de-thi-n5",
-      },
-      {
-        name: "Tổng hợp",
-        link: "/de-thi/de-thi-tong-hop",
-      },
-    ],
-  },
+  // {
+  //   name: "Grammar",
+  //   link: "/grammar",
+  //   subMenu: false,
+  //   subRoutes: [
+  //     {
+  //       name: "N1",
+  //       link: "/de-thi/de-thi-n1",
+  //     },
+  //     {
+  //       name: "N2",
+  //       link: "/de-thi/de-thi-n2",
+  //     },
+  //     {
+  //       name: "N3",
+  //       link: "/de-thi/de-thi-n3",
+  //     },
+  //     {
+  //       name: "N4",
+  //       link: "/de-thi/de-thi-n4",
+  //     },
+  //     {
+  //       name: "N5",
+  //       link: "/de-thi/de-thi-n5",
+  //     },
+  //     {
+  //       name: "Tổng hợp",
+  //       link: "/de-thi/de-thi-tong-hop",
+  //     },
+  //   ],
+  // },
   // ,
   // {
   //   name: "Media",

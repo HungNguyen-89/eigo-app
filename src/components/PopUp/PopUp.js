@@ -13,6 +13,8 @@ import ExamPageSingle from "../ExamPage/ExamPageSingle";
 import { MdOutlineClose } from "react-icons/md";
 import Logo from "../../assets/Logo/learn-language.png";
 import HomPage from "../HomePage";
+import VocabularyPageSingle from "../VocabularyPageSingle/VocabularyPageSingle";
+import VocabularyTranslateSentences from "../VocabularyTranslateSentences/VocabularyTranslateSentences";
 
 const PopUp = () => {
   const [popup, setPop] = useState(true);
@@ -34,7 +36,14 @@ const PopUp = () => {
             <Route path="/de-thi/:id" element={<ExamPageAll />} />
             <Route path="/flashcards/:id" element={<ExamPageSingle />} />
             <Route path="/flashcards/data/:id" element={<FlashCard />} />
-            <Route path="/game" element={<WordGuessGame />} />
+            <Route
+              path="/vocabulary-translate-sentences/:id"
+              element={<VocabularyPageSingle />}
+            />
+            <Route
+              path="/vocabulary-translate-sentences/data/:id"
+              element={<VocabularyTranslateSentences />}
+            />
           </Routes>
           {/* <Footer /> */}
         </div>

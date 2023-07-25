@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./ExamPageSingle.scss";
+import "./VocabularyPageSingle.scss";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { GiNotebook } from "react-icons/gi";
@@ -7,7 +7,7 @@ import Loading from "../Loading/Loading";
 import { VscBook } from "react-icons/vsc";
 import { TbListNumbers } from "react-icons/tb";
 
-const ExamPageSingle = () => {
+const VocabularyPageSingle = () => {
   const [currentCase, setCurrentCase] = useState("");
   const { id } = useParams();
   console.log(id);
@@ -57,7 +57,7 @@ const ExamPageSingle = () => {
                     <button className="examp-page-single-item-btn">
                       <Link
                         className="heading-links-item"
-                        to={`/flashcards/data/${content.link}`}
+                        to={`/vocabulary-translate-sentences/data/${content.link}`}
                       >
                         <span className="heading-links-item-icon">
                           <GiNotebook />
@@ -69,16 +69,16 @@ const ExamPageSingle = () => {
                 ))}
               </div>
               {/* <div className="under-btn-container">
-                <Link
-                  className="previous-list-btn"
-                  //to={`/flashcards/${dataTest.id}`}
-                >
-                  <span className="previous-list-icon">
-                    <TbListNumbers />
-                  </span>
-                  Back
-                </Link>
-              </div> */}
+                  <Link
+                    className="previous-list-btn"
+                    //to={`/flashcards/${dataTest.id}`}
+                  >
+                    <span className="previous-list-icon">
+                      <TbListNumbers />
+                    </span>
+                    Back
+                  </Link>
+                </div> */}
             </div>
           </div>
         </>
@@ -91,4 +91,4 @@ const ExamPageSingle = () => {
   );
 };
 
-export default ExamPageSingle;
+export default VocabularyPageSingle;

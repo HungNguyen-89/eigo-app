@@ -6,7 +6,7 @@ const WordGuessGame = () => {
   // str1 is the reference text.
   var str1 = "いちばん";
   // str2 is the text which I want to compare with str1.
-  var str2 = "いちご12";
+  var str2 = "1いちご12";
 
   function words(s) {
     return s.split("");
