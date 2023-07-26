@@ -4,12 +4,12 @@ import "./WordGuessGame.scss";
 
 const WordGuessGame = () => {
   // str1 is the reference text.
-  var str1 = "いちばん";
+  var str1 = "Anh ay song o mot noi nao đo thuoc London";
   // str2 is the text which I want to compare with str1.
-  var str2 = "1いちご12";
+  var str2 = "anh ay song o mot quan thuoc Ha Noi";
 
   function words(s) {
-    return s.split("");
+    return s.match(/\w+/g);
   }
 
   function markWords(source, reference) {
@@ -20,7 +20,7 @@ const WordGuessGame = () => {
       // same index is different from the word in source.
       if (reference.length < index || source[index] !== reference[index]) {
         // Words are not equal, mark the word.
-        marked.push(`<span style='color:red'>${source[index]}</span>`);
+        marked.push(`<mark>${source[index]}</mark>`);
       } else {
         // Words are equal, output as is.
         marked.push(source[index]);
@@ -31,25 +31,23 @@ const WordGuessGame = () => {
     return marked;
   }
 
-  // function addToDOM(sentence) {
-  //   const div = document.createElement("div");
-  //   div.innerHTML = sentence;
-  //   console.log(sentence);
-  //   document.body.appendChild(div);
-  // }
+  function addToDOM(sentence) {
+    const div = document.createElement("div");
+    div.innerHTML = sentence;
+    document.body.appendChild(div);
+  }
 
   let a = words(str1);
   let b = words(str2);
-  console.log(a);
 
   // Mark the words in a which are different in b.
   const aMarked = markWords(a, b);
-  // addToDOM(aMarked.join(" "));
-  console.log(aMarked);
+  //addToDOM(aMarked.join(' '));
 
   // Mark the words in b which are different in a.
   const bMarked = markWords(b, a);
-  // addToDOM(bMarked.join(" "));
+  console.log(bMarked.join(" "));
+  //addToDOM(bMarked.join(" "));
 
   return (
     <Fragment>
@@ -61,34 +59,13 @@ const WordGuessGame = () => {
         </div>
         <div id="image-background"></div>
         <div className="suggest">
-          {aMarked &&
-            aMarked.length > 0 &&
-            aMarked.map((item, index) => {
-              return (
-                <div
-                  className="answerCorrect"
-                  key={index}
-                  dangerouslySetInnerHTML={{ __html: item }}
-                >
-                  {/* {item} */}
-                </div>
-              );
-            })}
+          <div dangerouslySetInnerHTML={{ __html: aMarked.join(" ") }} />
+          {/* {(() => {
+            addToDOM(aMarked.join(" "));
+          })()} */}
         </div>
         <div className="inputText">
-          {bMarked &&
-            bMarked.length > 0 &&
-            bMarked.map((item, index) => {
-              return (
-                <div
-                  className="answerWrong"
-                  key={index}
-                  dangerouslySetInnerHTML={{ __html: item }}
-                >
-                  {/* {item} */}
-                </div>
-              );
-            })}
+          <div dangerouslySetInnerHTML={{ __html: bMarked.join(" ") }} />
         </div>
         <div id="buttonPlayContainer"></div>
       </div>

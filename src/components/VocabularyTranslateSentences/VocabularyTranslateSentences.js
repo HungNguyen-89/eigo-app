@@ -7,7 +7,8 @@ import Loading from "../Loading/Loading";
 import { TbListNumbers } from "react-icons/tb";
 import { AiFillSound } from "react-icons/ai";
 import { BsArrowRepeat } from "react-icons/bs";
-import { FaPenSquare } from "react-icons/fa";
+import { FaRegKeyboard } from "react-icons/fa";
+import { FiCheckSquare } from "react-icons/fi";
 
 const getRandomIndexOfArray = (array) => {
   let d = [];
@@ -141,7 +142,7 @@ const VocabularyTranslateSentences = () => {
     setExample_1(randomData[0].example_1);
     setDefinitionOfWord(randomData[0].definitionOfWord);
     setExample_1_vn(randomData[0].example_1_vn);
-    setNumberOfWhiteSpace(getNumberWhiteSpace(randomData[0].example_1));
+    setNumberOfWhiteSpace(getNumberWhiteSpace(randomData[0].example_1_vn));
     setActiveNextBtn(false);
     setActiveBtn(true);
   };
@@ -151,19 +152,23 @@ const VocabularyTranslateSentences = () => {
       {loading && randomData.length > 0 ? (
         <div className="vocabularyTranslateContainer">
           <div className="vocabularyTranslateFrontSide">
-            <div className="sentencesVn">{example_1}</div>
-            <div className="sentencesSuggest">
-              {(() => {
-                const arr = [];
-                for (let i = 0; i < numberOfWhiteSpace + 1; i++) {
-                  arr.push(<div className="suggestItem">{i + 1}</div>);
-                }
-                return arr;
-              })()}
+            <div className="sentencesVnContainer">
+              <div className="sentencesVn">{example_1_vn}</div>
+              <div className="sentencesSuggest">
+                {(() => {
+                  const arr = [];
+                  for (let i = 0; i < numberOfWhiteSpace + 1; i++) {
+                    arr.push(<div className="suggestItem">{i + 1}</div>);
+                  }
+                  return arr;
+                })()}
+              </div>
             </div>
 
             <div className="sentencesEn">
-              <FaPenSquare />
+              <span className="sentencesEnIcon">
+                <FaRegKeyboard />
+              </span>
               <input className="" placeholder="Type here to input"></input>
             </div>
 
@@ -204,9 +209,9 @@ const VocabularyTranslateSentences = () => {
               // onClick={() => Continue()}
             >
               <span className="buttonPlay-icon">
-                <AiFillSound />
+                <FiCheckSquare />
               </span>
-              Sound
+              Check
             </button>
           </div>
           {/* <div id="hiddenNumber"></div> */}

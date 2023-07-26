@@ -20,50 +20,75 @@ body {
     height: 450px;
     position: relative;
     z-index: 10;
-    // text-align: center;
     background: white;
     backface-visibility: hidden;
     z-index: 10;
     display: flex;
     flex-direction: column;
-    // align-items: center;
-    // justify-content: center;
     gap: 8px;
 
-    .sentencesVn {
-      font-size: 20px;
-      font-weight: 600;
-      padding-left: 15px;
-      padding-top: 20px;
-      margin-right: auto;
-      margin-left: auto;
+    .sentencesVnContainer {
+        height: 35%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+      .sentencesVn {
+        font-size: 20px;
+        font-weight: 600;
+        padding: 20px 20px 5px 20px;
+        margin-right: auto;
+        margin-left: auto;
+        // height: 20%;
+      }
+
+      .sentencesSuggest {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 5px 15px;
+
+        .suggestItem {
+          text-align: center;
+          width: 30px;
+          padding: 5px;
+          border: 1px solid black;
+          background-color: #00c660;
+          color: white;
+        }
+      }
     }
 
+
+
     .sentencesEn {
+      display: flex;
+      gap: 5px;
+      justify-content: center;
+      align-items: center;
       width: 90%;
       margin-right: auto;
-        margin-left: auto;
+      margin-left: auto;
+      // height: 15%;
+
+      .sentencesEnIcon {
+        font-size: 25px;
+        padding-top: 5px;
+      }
 
       input {
         border-bottom: solid 1px black;
+        border-radius: 0;
         width: 85%;
         font-size: 18px;
+        background-color: transparent;
       }
     }
 
-    .sentencesSuggest {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 10px 15px;
 
-      .suggestItem {
-        padding: 8px;
-        border: 1px solid black;
-      }
-    }
   }
 
   .buttonPlayContainer {
