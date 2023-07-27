@@ -84,6 +84,9 @@ const VocabularyTranslateSentences = () => {
   const [example_1_vn, setExample_1_vn] = useState("");
   const [definitionOfWord, setDefinitionOfWord] = useState("");
   const [numberOfWhiteSpace, setNumberOfWhiteSpace] = useState("");
+  const [input, setInput] = useState(false);
+  const [aMarked, setAMarked] = useState("");
+  const [bMarked, setBMarked] = useState("");
 
   useEffect(() => {
     if (randomData.length > 0) {
@@ -121,6 +124,8 @@ const VocabularyTranslateSentences = () => {
       setDefinitionOfWord(randomData[0].definitionOfWord);
       setExample_1_vn(randomData[0].example_1_vn);
       setNumberOfWhiteSpace(getNumberWhiteSpace(randomData[0].example_1));
+      setInput(false);
+      // document.getElementById("input-value").innerHTML = "";
     } else {
       setActiveNextBtn(true);
       setActiveBtn(false);
@@ -147,6 +152,55 @@ const VocabularyTranslateSentences = () => {
     setActiveBtn(true);
   };
 
+  const sentencesCheck = () => {
+    setInput(true);
+    //const inputValue = document.getElementById("input-value").value;
+    // str1 is the reference text.
+    // var str1 = "Anh ay song o mot noi nao đo thuoc London";
+    // str2 is the text which I want to compare with str1.
+    var str2 = document.getElementById("input-value").value;
+
+    function words(s) {
+      return s.match(/\w+/g);
+    }
+
+    function markWords(source, reference) {
+      var marked = [];
+      // Loop over all the words in source.
+      for (let index = 0; index < source.length; index++) {
+        // Check if reference has fewer words or of the word at the
+        // same index is different from the word in source.
+        if (reference.length < index || source[index] !== reference[index]) {
+          // Words are not equal, mark the word.
+          marked.push(`<mark>${source[index]}</mark>`);
+        } else {
+          // Words are equal, output as is.
+          marked.push(source[index]);
+        }
+      }
+
+      // Return the array with (marked) words.
+      return marked;
+    }
+
+    // function addToDOM(sentence) {
+    //   const div = document.createElement("div");
+    //   div.innerHTML = sentence;
+    //   document.body.appendChild(div);
+    // }
+
+    let a = words(example_1);
+    let b = words(str2);
+
+    // Mark the words in a which are different in b.
+    setAMarked(markWords(a, b).join(" "));
+    //addToDOM(aMarked.join(' '));
+    // Mark the words in b which are different in a.
+    setBMarked(markWords(b, a).join(" "));
+    //console.log(bMarked.join(" "));
+    //addToDOM(bMarked.join(" "));
+  };
+
   return (
     <>
       {loading && randomData.length > 0 ? (
@@ -154,14 +208,18 @@ const VocabularyTranslateSentences = () => {
           <div className="vocabularyTranslateFrontSide">
             <div className="sentencesVnContainer">
               <div className="sentencesVn">{example_1_vn}</div>
-              <div className="sentencesSuggest">
-                {(() => {
-                  const arr = [];
-                  for (let i = 0; i < numberOfWhiteSpace + 1; i++) {
-                    arr.push(<div className="suggestItem">{i + 1}</div>);
-                  }
-                  return arr;
-                })()}
+              <div className={"sentencesSuggest"}>
+                {input ? (
+                  <div dangerouslySetInnerHTML={{ __html: aMarked }} />
+                ) : (
+                  (() => {
+                    const arr = [];
+                    for (let i = 0; i < numberOfWhiteSpace + 1; i++) {
+                      arr.push(<div className="suggestItem">{i + 1}</div>);
+                    }
+                    return arr;
+                  })()
+                )}
               </div>
             </div>
 
@@ -169,7 +227,14 @@ const VocabularyTranslateSentences = () => {
               <span className="sentencesEnIcon">
                 <FaRegKeyboard />
               </span>
-              <input className="" placeholder="Type here to input"></input>
+              {input ? (
+                <div dangerouslySetInnerHTML={{ __html: bMarked }} />
+              ) : (
+                <input
+                  id="input-value"
+                  placeholder="Type here to input"
+                ></input>
+              )}
             </div>
 
             <div className="phoneticOfWord">{numberOfWhiteSpace}</div>
@@ -206,7 +271,7 @@ const VocabularyTranslateSentences = () => {
             </button>
             <button
               className={`buttonPlay ${activeNextBtn ? "hiddenBtn" : ""}`}
-              // onClick={() => Continue()}
+              onClick={() => sentencesCheck()}
             >
               <span className="buttonPlay-icon">
                 <FiCheckSquare />
