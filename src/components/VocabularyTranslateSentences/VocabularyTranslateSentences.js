@@ -7,7 +7,7 @@ import Loading from "../Loading/Loading";
 import { TbListNumbers } from "react-icons/tb";
 import { AiFillSound } from "react-icons/ai";
 import { BsArrowRepeat } from "react-icons/bs";
-import { FaRegKeyboard } from "react-icons/fa";
+import { MdOutlineQuiz } from "react-icons/md";
 import { FiCheckSquare } from "react-icons/fi";
 
 const getRandomIndexOfArray = (array) => {
@@ -87,6 +87,8 @@ const VocabularyTranslateSentences = () => {
   const [input, setInput] = useState(false);
   const [aMarked, setAMarked] = useState("");
   const [bMarked, setBMarked] = useState("");
+  const [checkResult, setCheckResult] = useState("");
+  const [correct, setCorrect] = useState(false);
 
   useEffect(() => {
     if (randomData.length > 0) {
@@ -101,19 +103,10 @@ const VocabularyTranslateSentences = () => {
     }
   }, [loading]);
 
-  const [activeCard, setActiveCard] = useState(false);
-  const [activeBack, setActiveBack] = useState(false);
   const [activeBtn, setActiveBtn] = useState(true);
   const [activeNextBtn, setActiveNextBtn] = useState(false);
 
-  // const handleFlip = () => {
-  //   setActiveCard(!activeCard);
-  //   setActiveBack(false);
-  // };
-
   const Continue = () => {
-    setActiveCard(false);
-    setActiveBack(true);
     if (randomData && randomData.length > 1) {
       randomData.splice(0, 1);
       setWord(randomData[0].word);
@@ -125,7 +118,8 @@ const VocabularyTranslateSentences = () => {
       setExample_1_vn(randomData[0].example_1_vn);
       setNumberOfWhiteSpace(getNumberWhiteSpace(randomData[0].example_1));
       setInput(false);
-      // document.getElementById("input-value").innerHTML = "";
+      setCheckResult("");
+      setCorrect(false);
     } else {
       setActiveNextBtn(true);
       setActiveBtn(false);
@@ -150,15 +144,17 @@ const VocabularyTranslateSentences = () => {
     setNumberOfWhiteSpace(getNumberWhiteSpace(randomData[0].example_1_vn));
     setActiveNextBtn(false);
     setActiveBtn(true);
+    setCheckResult("");
+    setCorrect(false);
   };
 
   const sentencesCheck = () => {
     setInput(true);
-    //const inputValue = document.getElementById("input-value").value;
-    // str1 is the reference text.
-    // var str1 = "Anh ay song o mot noi nao đo thuoc London";
-    // str2 is the text which I want to compare with str1.
     var str2 = document.getElementById("input-value").value;
+    if (example_1 === str2) {
+      setCheckResult("✓");
+      setCorrect(true);
+    } else setCheckResult("✕");
 
     function words(s) {
       return s.match(/\w+/g);
@@ -183,12 +179,6 @@ const VocabularyTranslateSentences = () => {
       return marked;
     }
 
-    // function addToDOM(sentence) {
-    //   const div = document.createElement("div");
-    //   div.innerHTML = sentence;
-    //   document.body.appendChild(div);
-    // }
-
     let a = words(example_1);
     let b = words(str2);
 
@@ -206,8 +196,11 @@ const VocabularyTranslateSentences = () => {
       {loading && randomData.length > 0 ? (
         <div className="vocabularyTranslateContainer">
           <div className="vocabularyTranslateFrontSide">
-            <div className="sentencesVnContainer">
-              <div className="sentencesVn">{example_1_vn}</div>
+            <div className="sentencesUp">
+              <div className="sentencesVn">
+                <MdOutlineQuiz />
+                {example_1_vn}
+              </div>
               <div className={"sentencesSuggest"}>
                 {input ? (
                   <div dangerouslySetInnerHTML={{ __html: aMarked }} />
@@ -221,23 +214,35 @@ const VocabularyTranslateSentences = () => {
                   })()
                 )}
               </div>
+              <div className="sentencesEn">
+                {input ? (
+                  <div>
+                    <div
+                      className="sentencesEnInput"
+                      dangerouslySetInnerHTML={{ __html: bMarked }}
+                    />
+                    <div
+                      className={
+                        correct
+                          ? "checkResult correct"
+                          : "checkResult uncorrect"
+                      }
+                    >
+                      {checkResult}
+                    </div>
+                  </div>
+                ) : (
+                  <input
+                    id="input-value"
+                    placeholder="Type here to input"
+                  ></input>
+                )}
+              </div>
             </div>
 
-            <div className="sentencesEn">
-              <span className="sentencesEnIcon">
-                <FaRegKeyboard />
-              </span>
-              {input ? (
-                <div dangerouslySetInnerHTML={{ __html: bMarked }} />
-              ) : (
-                <input
-                  id="input-value"
-                  placeholder="Type here to input"
-                ></input>
-              )}
+            <div className="sentencesDown">
+              <div className="explainWord"></div>
             </div>
-
-            <div className="phoneticOfWord">{numberOfWhiteSpace}</div>
           </div>
 
           <div className="buttonPlayContainer">
@@ -279,7 +284,6 @@ const VocabularyTranslateSentences = () => {
               Check
             </button>
           </div>
-          {/* <div id="hiddenNumber"></div> */}
         </div>
       ) : (
         <div className="loading-container">
