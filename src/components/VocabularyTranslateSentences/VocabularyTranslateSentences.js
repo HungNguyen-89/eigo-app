@@ -89,6 +89,7 @@ const VocabularyTranslateSentences = () => {
   const [bMarked, setBMarked] = useState("");
   const [checkResult, setCheckResult] = useState("");
   const [correct, setCorrect] = useState(false);
+  const [btnValue, setBtnValue] = useState(false);
 
   useEffect(() => {
     if (randomData.length > 0) {
@@ -191,6 +192,12 @@ const VocabularyTranslateSentences = () => {
     //addToDOM(bMarked.join(" "));
   };
 
+  const inputValuecheck = () => {
+    var str = document.getElementById("input-value").value;
+    // if (str != "") setBtnValue(true);
+    console.log(str);
+  };
+
   return (
     <>
       {loading && randomData.length > 0 ? (
@@ -203,7 +210,10 @@ const VocabularyTranslateSentences = () => {
               </div>
               <div className={"sentencesSuggest"}>
                 {input ? (
-                  <div dangerouslySetInnerHTML={{ __html: aMarked }} />
+                  <div
+                    className="sentencesResult"
+                    dangerouslySetInnerHTML={{ __html: aMarked }}
+                  />
                 ) : (
                   (() => {
                     const arr = [];
@@ -216,26 +226,29 @@ const VocabularyTranslateSentences = () => {
               </div>
               <div className="sentencesEn">
                 {input ? (
-                  <div>
-                    <div
-                      className="sentencesEnInput"
-                      dangerouslySetInnerHTML={{ __html: bMarked }}
-                    />
-                    <div
-                      className={
-                        correct
-                          ? "checkResult correct"
-                          : "checkResult uncorrect"
-                      }
-                    >
-                      {checkResult}
-                    </div>
-                  </div>
+                  <div
+                    className="sentencesEnInput"
+                    dangerouslySetInnerHTML={{ __html: bMarked }}
+                  />
                 ) : (
                   <input
                     id="input-value"
                     placeholder="Type here to input"
+                    onChange={() => inputValuecheck()}
                   ></input>
+                )}
+              </div>
+              <div className="checkResultContainer">
+                {input ? (
+                  <div
+                    className={
+                      correct ? "checkResult correct" : "checkResult uncorrect"
+                    }
+                  >
+                    {checkResult}
+                  </div>
+                ) : (
+                  ""
                 )}
               </div>
             </div>
@@ -276,6 +289,7 @@ const VocabularyTranslateSentences = () => {
             </button>
             <button
               className={`buttonPlay ${activeNextBtn ? "hiddenBtn" : ""}`}
+              disabled={!btnValue}
               onClick={() => sentencesCheck()}
             >
               <span className="buttonPlay-icon">
