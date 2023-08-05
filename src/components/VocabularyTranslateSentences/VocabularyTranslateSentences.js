@@ -108,6 +108,8 @@ const VocabularyTranslateSentences = () => {
   const [activeNextBtn, setActiveNextBtn] = useState(false);
 
   const Continue = () => {
+    setStrValue("");
+    setBtnValue(false);
     if (randomData && randomData.length > 1) {
       randomData.splice(0, 1);
       setWord(randomData[0].word);
@@ -159,7 +161,7 @@ const VocabularyTranslateSentences = () => {
     } else setCheckResult("✕");
 
     function words(s) {
-      return s.match(/\w+/g);
+      return s.match(/\S+/g);
     }
 
     function markWords(source, reference) {
@@ -193,23 +195,14 @@ const VocabularyTranslateSentences = () => {
     //addToDOM(bMarked.join(" "));
   };
 
-  const inputValuecheck = (e) => {
-    // setMessage(e.target.value);
-    var str = document.getElementById("input-value")?.value;
-    //  if (str !== "") setBtnValue(true);
-    // console.log(str);
+  const [strValue, setStrValue] = useState("");
 
-    // function hasWhiteSpace(s) {
-    //   return /\s/g.test(s);
-    // }
-    // if (hasWhiteSpace(str)) {
-    //   //alert("unsuccess");
-    //   setBtnValue(false);
-    // } else {
-    //   //alert("success");
-    //   setBtnValue(true);
-    // }
-    //console.log(e.target.value);
+  const inputValuecheck = (event) => {
+    // e.preventDefault();
+    setStrValue(event.target.value);
+    console.log(event.target.value);
+
+    var str = document.getElementById("input-value")?.value;
     if (str.trim().length !== 0) {
       console.log("input value is NOT empty");
       setBtnValue(true);
@@ -254,9 +247,9 @@ const VocabularyTranslateSentences = () => {
                 ) : (
                   <input
                     id="input-value"
-                    //name="message"
+                    value={strValue}
                     placeholder="Type here to input"
-                    onChange={() => inputValuecheck()}
+                    onChange={(e) => inputValuecheck(e)}
                   ></input>
                 )}
               </div>
@@ -281,10 +274,7 @@ const VocabularyTranslateSentences = () => {
           </div>
 
           <div className="buttonPlayContainer">
-            <button
-              className="buttonPlay"
-              // onClick={() => Continue()}
-            >
+            <button className="buttonPlay">
               <span className="buttonPlay-icon">
                 <TbListNumbers />
               </span>
