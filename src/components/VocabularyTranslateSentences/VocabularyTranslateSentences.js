@@ -150,9 +150,10 @@ const VocabularyTranslateSentences = () => {
   };
 
   const sentencesCheck = () => {
+    setBtnValue(false);
     setInput(true);
-    var str2 = document.getElementById("input-value").value;
-    if (example_1 === str2) {
+    var str = document.getElementById("input-value").value;
+    if (example_1 === str) {
       setCheckResult("✓");
       setCorrect(true);
     } else setCheckResult("✕");
@@ -181,7 +182,7 @@ const VocabularyTranslateSentences = () => {
     }
 
     let a = words(example_1);
-    let b = words(str2);
+    let b = words(str);
 
     // Mark the words in a which are different in b.
     setAMarked(markWords(a, b).join(" "));
@@ -192,10 +193,30 @@ const VocabularyTranslateSentences = () => {
     //addToDOM(bMarked.join(" "));
   };
 
-  const inputValuecheck = () => {
-    var str = document.getElementById("input-value").value;
-    // if (str != "") setBtnValue(true);
-    console.log(str);
+  const inputValuecheck = (e) => {
+    // setMessage(e.target.value);
+    var str = document.getElementById("input-value")?.value;
+    //  if (str !== "") setBtnValue(true);
+    // console.log(str);
+
+    // function hasWhiteSpace(s) {
+    //   return /\s/g.test(s);
+    // }
+    // if (hasWhiteSpace(str)) {
+    //   //alert("unsuccess");
+    //   setBtnValue(false);
+    // } else {
+    //   //alert("success");
+    //   setBtnValue(true);
+    // }
+    //console.log(e.target.value);
+    if (str.trim().length !== 0) {
+      console.log("input value is NOT empty");
+      setBtnValue(true);
+    } else {
+      console.log("input value is empty");
+      setBtnValue(false);
+    }
   };
 
   return (
@@ -233,6 +254,7 @@ const VocabularyTranslateSentences = () => {
                 ) : (
                   <input
                     id="input-value"
+                    //name="message"
                     placeholder="Type here to input"
                     onChange={() => inputValuecheck()}
                   ></input>
