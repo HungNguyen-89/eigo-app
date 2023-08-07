@@ -7,8 +7,10 @@ import Loading from "../Loading/Loading";
 import { TbListNumbers } from "react-icons/tb";
 import { AiFillSound } from "react-icons/ai";
 import { BsArrowRepeat } from "react-icons/bs";
-import { MdOutlineQuiz } from "react-icons/md";
 import { FiCheckSquare } from "react-icons/fi";
+import flagEng from "../../assets/Flag/Flag_of_the_United_Kingdom.png";
+import flagVn from "../../assets/Flag/Flag_of_Vietnam.png";
+import questionMark from "../../assets/QuestionMark/questionMark.png";
 
 const getRandomIndexOfArray = (array) => {
   let d = [];
@@ -90,6 +92,7 @@ const VocabularyTranslateSentences = () => {
   const [checkResult, setCheckResult] = useState("");
   const [correct, setCorrect] = useState(false);
   const [btnValue, setBtnValue] = useState(false);
+  const [checkResultText, setCheckResultText] = useState("");
 
   useEffect(() => {
     if (randomData.length > 0) {
@@ -122,6 +125,7 @@ const VocabularyTranslateSentences = () => {
       setNumberOfWhiteSpace(getNumberWhiteSpace(randomData[0].example_1));
       setInput(false);
       setCheckResult("");
+      setCheckResultText("");
       setCorrect(false);
     } else {
       setActiveNextBtn(true);
@@ -148,6 +152,7 @@ const VocabularyTranslateSentences = () => {
     setActiveNextBtn(false);
     setActiveBtn(true);
     setCheckResult("");
+    setCheckResultText("");
     setCorrect(false);
   };
 
@@ -157,8 +162,12 @@ const VocabularyTranslateSentences = () => {
     var str = document.getElementById("input-value").value;
     if (example_1 === str) {
       setCheckResult("✓");
+      setCheckResultText("CORRECT");
       setCorrect(true);
-    } else setCheckResult("✕");
+    } else {
+      setCheckResult("✕");
+      setCheckResultText("WRONG");
+    }
 
     function words(s) {
       return s.match(/\S+/g);
@@ -200,14 +209,14 @@ const VocabularyTranslateSentences = () => {
   const inputValuecheck = (event) => {
     // e.preventDefault();
     setStrValue(event.target.value);
-    console.log(event.target.value);
+    //console.log(event.target.value);
 
     var str = document.getElementById("input-value")?.value;
     if (str.trim().length !== 0) {
-      console.log("input value is NOT empty");
+      //console.log("input value is NOT empty");
       setBtnValue(true);
     } else {
-      console.log("input value is empty");
+      //console.log("input value is empty");
       setBtnValue(false);
     }
   };
@@ -219,7 +228,7 @@ const VocabularyTranslateSentences = () => {
           <div className="vocabularyTranslateFrontSide">
             <div className="sentencesUp">
               <div className="sentencesVn">
-                <MdOutlineQuiz />
+                <img src={questionMark} alt="" />
                 {example_1_vn}
               </div>
               <div className={"sentencesSuggest"}>
@@ -253,8 +262,9 @@ const VocabularyTranslateSentences = () => {
                   ></input>
                 )}
               </div>
-              <div className="checkResultContainer">
-                {input ? (
+
+              {input ? (
+                <div className="checkResultContainer">
                   <div
                     className={
                       correct ? "checkResult correct" : "checkResult uncorrect"
@@ -262,14 +272,45 @@ const VocabularyTranslateSentences = () => {
                   >
                     {checkResult}
                   </div>
-                ) : (
-                  ""
-                )}
-              </div>
+                  <div
+                    className={
+                      correct
+                        ? "checkResultText textCorrect"
+                        : "checkResultText textWrong"
+                    }
+                  >
+                    {checkResultText}
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
 
             <div className="sentencesDown">
-              <div className="explainWord"></div>
+              {input ? (
+                <div className="explainWordContainer">
+                  <div className="explain_word_and_sound">
+                    <div className="explain_word">{word}</div>
+                    <div className="sound_of_explain_word">
+                      <AiFillSound />
+                    </div>
+                  </div>
+
+                  <div className="part_of_speech">{partOfSpeech}</div>
+                  <div className="phonetic_of_word">{phonetic}</div>
+                  <div className="definition_of_word">
+                    <img src={flagEng} alt="" />
+                    {definitionOfWord}
+                  </div>
+                  <div className="meaning_of_word">
+                    <img src={flagVn} alt="" />
+                    {meaning}
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
 
