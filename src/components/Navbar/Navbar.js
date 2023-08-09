@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../../assets/Logo/learn-language.png";
+import Logo from "../../assets/Logo/logo_01-removebg-preview.png";
 import { TbListSearch } from "react-icons/tb";
 
 const Navbar = ({ handleClickOpen }) => {
