@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../../assets/Logo/logo_01-removebg-preview.png";
+import Logo from "../../assets/Logo/logo_01.png";
 import { TbListSearch } from "react-icons/tb";
 
 const Navbar = ({ handleClickOpen }) => {
@@ -18,7 +18,7 @@ const Navbar = ({ handleClickOpen }) => {
     <div className="navbar-container">
       <div className="navbar-logo">
         <img src={Logo} />
-        <p>EIGO-APP</p>
+        <p>EIGO</p>
       </div>
       {/* <div className="navbar-links">
         {links.map((link) => (
