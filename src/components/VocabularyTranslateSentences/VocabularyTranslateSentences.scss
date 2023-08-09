@@ -134,6 +134,7 @@ body {
       display: flex;
       padding: 15px;
       gap: 5px;
+      width: 90%;
       // justify-content: start;
       align-items: center;
       // width: 90%;
@@ -163,12 +164,12 @@ body {
       gap: 8px;
 
       .checkResult {
-        font-size: 32px;
+        font-size: 30px;
         font-weight: 600;
       }
 
       .correct {
-        font-size: 30px;
+        //font-size: 30px;
         color: #00c660;
         border: solid 2px #00c660;
         height: 45px;
@@ -181,7 +182,7 @@ body {
       .uncorrect {
         display: flex;
         justify-content: center;
-        //align-items: center;
+        align-items: center;
         color: red;
         border: solid 2px red;
         height: 50px;

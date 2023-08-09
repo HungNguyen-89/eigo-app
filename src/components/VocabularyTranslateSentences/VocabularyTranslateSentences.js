@@ -228,7 +228,7 @@ const VocabularyTranslateSentences = () => {
           <div className="vocabularyTranslateFrontSide">
             <div className="sentencesUp">
               <div className="sentencesVn">
-                <img src={questionMark} alt="" />
+                {/* <img src={questionMark} alt="" /> */}
                 {example_1_vn}
               </div>
               <div className={"sentencesSuggest"}>
