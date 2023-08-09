@@ -11,7 +11,7 @@ import NavbarMobile from "../Navbar/NavbarMobile";
 import ExamPageAll from "../ExamPage/ExamPageAll";
 import ExamPageSingle from "../ExamPage/ExamPageSingle";
 import { MdOutlineClose } from "react-icons/md";
-import Logo from "../../assets/Logo/learn-language.png";
+import Logo from "../../assets/Logo/logo_01.png";
 import HomPage from "../HomePage";
 import VocabularyPageSingle from "../VocabularyPageSingle/VocabularyPageSingle";
 import VocabularyTranslateSentences from "../VocabularyTranslateSentences/VocabularyTranslateSentences";
@@ -53,7 +53,7 @@ const PopUp = () => {
             <div className="popup-header">
               <div className="popup-navbar-logo">
                 <img src={Logo} />
-                <p>EIGO-APP</p>
+                <p>EIGO</p>
               </div>
               <div className="popup-right">
                 <MdOutlineClose

@@ -10,8 +10,6 @@
     z-index: 100;
     cursor: pointer;
     color: white;
-
-    
   }
 
   .main {
@@ -19,7 +17,7 @@
     width: 100%;
     position: absolute;
     top: 0;
-   
+
     .popup {
       height: 100%;
       width: 100%;
@@ -27,7 +25,6 @@
       top: 0;
       left: 0;
       z-index: 1000;
-      
 
       .popup-header {
         background-color: #001a66;
@@ -37,11 +34,12 @@
         width: 100%;
         height: 65px;
         z-index: 10;
-        padding: 0 3%;
+        padding: 0 5%;
         display: flex;
         // justify-content: start;
         align-items: center;
         color: white;
+        // justify-content: center;
 
         .popup-navbar-logo {
           display: flex;
@@ -49,34 +47,38 @@
           cursor: pointer;
           align-items: center;
           //flex-direction: column;
-          gap: 10px;
-          justify-content: center;
+          gap: 8px;
 
           img {
             // margin-top: 5px;
-            height: 60%;
+            height: 65%;
           }
 
           p {
             font-family: "Roboto", sans-serif;
             //color: white;
-            font-size: 12px;
+            // font-size: 12px;
             font-weight: 600;
+            font-size: 22px;
           }
         }
       }
-      .popup-right{
+
+      .popup-right {
         position: absolute;
         top: 15px;
         right: 10px;
       }
     }
-    
   }
 
-  // @media (max-width:760px){
-  //     button{
-  //         display: block;
-  //     }
-  // }
+  @media (max-width: 760px) {
+    .main {
+      .popup {
+        .popup-header {
+          justify-content: center;
+        }
+      }
+    }
+  }
 }
