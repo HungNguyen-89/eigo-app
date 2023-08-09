@@ -11,11 +11,11 @@ body {
 .vocabularyTranslateContainer {
   background: #404040;
   border: 1px solid black;
-  height: 100vh;
+  height: calc(100vh - 65px);
 
   .vocabularyTranslateFrontSide {
     margin: auto;
-    margin-top: 10px;
+    margin-top: 3px;
     border-radius: 10px;
     width: 350px;
     min-height: 480px;
@@ -29,7 +29,7 @@ body {
     //gap: 8px;
 
     .sentencesUp {
-      padding-top: 10px;
+      padding-top: 5px;
       //height: 55%;
       display: flex;
       flex-direction: column;
@@ -40,12 +40,13 @@ body {
         font-size: 20px;
         font-weight: 600;
         padding: 20px;
+        padding-top: 15px;
         padding-bottom: 8px;
         margin-right: auto;
         margin-left: auto;
         //color: #001a66;
 
-        img{
+        img {
           height: 20px;
           margin-right: 5px;
         }
@@ -109,7 +110,7 @@ body {
           // align-items: center;
 
           img {
-          margin-right: 5px;
+            margin-right: 5px;
             height: 12px;
             width: 18px;
           }
@@ -120,7 +121,7 @@ body {
           // flex-wrap: wrap;
           // gap: 5px;
           // align-items: center;
-          
+
           img {
             margin-right: 5px;
             height: 12px;
@@ -132,10 +133,10 @@ body {
 
     .sentencesEn {
       display: flex;
-      padding:  10px 15px;
+      padding: 10px 15px;
       padding-bottom: 15px;
       gap: 5px;
-      width: 90%;
+      width: 95%;
       align-items: center;
       justify-content: center;
       flex-wrap: wrap;
@@ -143,8 +144,8 @@ body {
 
       .sentencesEnInput {
         font-size: 20px;
-      //   display: flex;
-      //  align-items: center;
+        //   display: flex;
+        //  align-items: center;
       }
 
       input {
@@ -209,14 +210,31 @@ body {
     }
   }
 
+  .checkBoxContainer {
+    // position: absolute;
+    // bottom: 10px;
+    padding-top: 5px;
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    .checkBoxText{
+      padding-left: 5px;
+      color: white;
+     
+    }
+  }
+
   .buttonPlayContainer {
     display: flex;
     //flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: auto;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     width: 400px;
     position: relative;
     text-align: center;
@@ -238,7 +256,7 @@ body {
       cursor: pointer;
       font-weight: bold;
 
-      .buttonPlay-icon{
+      .buttonPlay-icon {
         margin-right: 2px;
         position: relative;
         top: 2px;

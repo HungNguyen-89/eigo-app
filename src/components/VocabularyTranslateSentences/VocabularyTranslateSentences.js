@@ -113,6 +113,8 @@ const VocabularyTranslateSentences = () => {
   const Continue = () => {
     setStrValue("");
     setBtnValue(false);
+    setIsChecked(false);
+
     if (randomData && randomData.length > 1) {
       randomData.splice(0, 1);
       setWord(randomData[0].word);
@@ -138,6 +140,7 @@ const VocabularyTranslateSentences = () => {
       setDefinitionOfWord("");
       setRandomData(getRandomIndexOfArray(dataTest.flashCardData));
     }
+    console.log(randomData);
   };
 
   const Repeat = () => {
@@ -154,6 +157,7 @@ const VocabularyTranslateSentences = () => {
     setCheckResult("");
     setCheckResultText("");
     setCorrect(false);
+    setIsChecked(false);
   };
 
   const sentencesCheck = () => {
@@ -221,10 +225,59 @@ const VocabularyTranslateSentences = () => {
     }
   };
 
+  const [isChecked, setIsChecked] = useState(false);
+  const clickHandler = () => {
+    setIsChecked(!isChecked);
+
+    if (!isChecked) {
+      randomData.push(randomData[0]);
+    } else {
+      randomData.pop();
+    }
+    console.log(randomData);
+  };
+
   return (
     <>
       {loading && randomData.length > 0 ? (
         <div className="vocabularyTranslateContainer">
+          <div className="buttonPlayContainer">
+            <button className="buttonPlay">
+              <span className="buttonPlay-icon">
+                <TbListNumbers />
+              </span>
+              Back List
+            </button>
+            <button
+              className={`buttonPlay ${activeNextBtn ? "hiddenBtn" : ""}`}
+              onClick={() => Continue()}
+            >
+              <span className="buttonPlay-icon">
+                <TbPlayerTrackNextFilled />
+              </span>
+              Next
+            </button>
+
+            <button
+              className={`buttonPlay ${activeBtn ? "hiddenBtn" : ""}`}
+              onClick={() => Repeat()}
+            >
+              <span className="buttonPlay-icon">
+                <BsArrowRepeat />
+              </span>
+              Again
+            </button>
+            <button
+              className={`buttonPlay ${activeNextBtn ? "hiddenBtn" : ""}`}
+              disabled={!btnValue}
+              onClick={() => sentencesCheck()}
+            >
+              <span className="buttonPlay-icon">
+                <FiCheckSquare />
+              </span>
+              Check
+            </button>
+          </div>
           <div className="vocabularyTranslateFrontSide">
             <div className="sentencesUp">
               <div className="sentencesVn">
@@ -314,42 +367,16 @@ const VocabularyTranslateSentences = () => {
             </div>
           </div>
 
-          <div className="buttonPlayContainer">
-            <button className="buttonPlay">
-              <span className="buttonPlay-icon">
-                <TbListNumbers />
-              </span>
-              Back List
-            </button>
-            <button
-              className={`buttonPlay ${activeNextBtn ? "hiddenBtn" : ""}`}
-              onClick={() => Continue()}
-            >
-              <span className="buttonPlay-icon">
-                <TbPlayerTrackNextFilled />
-              </span>
-              Next
-            </button>
-
-            <button
-              className={`buttonPlay ${activeBtn ? "hiddenBtn" : ""}`}
-              onClick={() => Repeat()}
-            >
-              <span className="buttonPlay-icon">
-                <BsArrowRepeat />
-              </span>
-              Again
-            </button>
-            <button
-              className={`buttonPlay ${activeNextBtn ? "hiddenBtn" : ""}`}
-              disabled={!btnValue}
-              onClick={() => sentencesCheck()}
-            >
-              <span className="buttonPlay-icon">
-                <FiCheckSquare />
-              </span>
-              Check
-            </button>
+          <div className="checkBoxContainer">
+            <input
+              type="checkbox"
+              id="checkbox"
+              checked={isChecked}
+              onChange={() => clickHandler()}
+            />
+            <span className="checkBoxText">
+              Click here if you want to repeat
+            </span>
           </div>
         </div>
       ) : (
