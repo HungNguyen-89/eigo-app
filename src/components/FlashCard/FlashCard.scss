@@ -13,9 +13,41 @@ body {
   border: 1px solid black;
   height: calc(100vh - 65px);
 
+  .backgroundPlayRepeat {
+    margin: auto;
+    margin-top: 3px;
+    border-radius: 10px;
+    width: 350px;
+    min-height: 480px;
+    position: relative;
+    z-index: 10;
+    background: #fffaf0;
+    backface-visibility: hidden;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+
+    p {
+      background-color: #001a66;
+      width: 100%;
+      padding: 10px;
+      color: white;
+      font-size: 25px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    img {
+      height: 60px;
+    }
+  }
+
   .backgroundPlay {
     margin: auto;
-   margin-top: 3px;
+    margin-top: 3px;
     width: 350px;
     height: 480px;
     position: relative;

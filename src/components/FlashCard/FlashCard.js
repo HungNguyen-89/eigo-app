@@ -9,6 +9,7 @@ import { AiFillSound } from "react-icons/ai";
 import { BsArrowRepeat } from "react-icons/bs";
 import flagEng from "../../assets/Flag/Flag_of_the_United_Kingdom.png";
 import flagVn from "../../assets/Flag/Flag_of_Vietnam.png";
+import againLogo from "../../assets/Again/play-again.png";
 
 const getRandomIndexOfArray = (array) => {
   let d = [];
@@ -79,6 +80,7 @@ const FlashCard = () => {
   const [example_1, setExample_1] = useState("");
   const [definitionOfWord, setDefinitionOfWord] = useState("");
   const [example_1_vn, setExample_1_vn] = useState("");
+  const [checkRepeat, setCheckRepeat] = useState(false);
 
   useEffect(() => {
     if (randomData.length > 0) {
@@ -105,6 +107,8 @@ const FlashCard = () => {
   const Continue = () => {
     setActiveCard(false);
     setActiveBack(true);
+    setIsChecked(false);
+
     if (randomData && randomData.length > 1) {
       randomData.splice(0, 1);
       setWord(randomData[0].word);
@@ -124,6 +128,7 @@ const FlashCard = () => {
       setExample_1("");
       setDefinitionOfWord("");
       setRandomData(getRandomIndexOfArray(dataTest.flashCardData));
+      setCheckRepeat(true);
     }
     return (
       <div className="flashCardFrontSide">
@@ -144,6 +149,7 @@ const FlashCard = () => {
     setExample_1_vn(randomData[0].example_1_vn);
     setActiveNextBtn(false);
     setActiveBtn(true);
+    setCheckRepeat(false);
   };
 
   const [isChecked, setIsChecked] = useState(false);
@@ -202,61 +208,73 @@ const FlashCard = () => {
               Sound
             </button>
           </div>
-          <div className="backgroundPlay">
-            <div className="label">
-              {/* <label> */}
-              <div
-                onClick={() => handleFlip()}
-                className={`flip-card ${activeCard ? "cardFlip" : ""}`}
-              >
-                {/*front*/}
-                <div className="flashCardFrontSide">
-                  <div className="wordOfFrontSide">{word}</div>
-                  <div className="partOfSpeech">{partOfSpeech}</div>
-                  <div className="phoneticOfWord">{phonetic}</div>
-                </div>
-                {/*back*/}
-                <div className="flashCardBackSide">
-                  <div className="upOfBackSide">
-                    {/* <div className="imageBackSide">
+          {checkRepeat ? (
+            <div className="backgroundPlayRepeat">
+              <p>Do you want to again?</p>
+              <img src={againLogo} />
+            </div>
+          ) : (
+            <div className="backgroundPlay">
+              <div className="label">
+                {/* <label> */}
+                <div
+                  onClick={() => handleFlip()}
+                  className={`flip-card ${activeCard ? "cardFlip" : ""}`}
+                >
+                  {/*front*/}
+                  <div className="flashCardFrontSide">
+                    <div className="wordOfFrontSide">{word}</div>
+                    <div className="partOfSpeech">{partOfSpeech}</div>
+                    <div className="phoneticOfWord">{phonetic}</div>
+                  </div>
+                  {/*back*/}
+                  <div className="flashCardBackSide">
+                    <div className="upOfBackSide">
+                      {/* <div className="imageBackSide">
                       <img
                         src="https://live.staticflickr.com/65535/53059383094_a30793af13_w.jpg"
                         alt=""
                       />
                     </div> */}
-                    <div
-                      className={`txtBack ${activeBack ? "hiddenBack" : ""}`}
-                    >
-                      <div className="definitionOfWord">
-                        <img src={flagEng} alt="" />
-                        {definitionOfWord}
+                      <div
+                        className={`txtBack ${activeBack ? "hiddenBack" : ""}`}
+                      >
+                        <div className="definitionOfWord">
+                          <img src={flagEng} alt="" />
+                          {definitionOfWord}
+                        </div>
+                        <div className="meaningOfWord">
+                          <img src={flagVn} alt="" />
+                          {meaning}
+                        </div>
                       </div>
-                      <div className="meaningOfWord">
-                        <img src={flagVn} alt="" />
-                        {meaning}
+                      <div className="examplesOfWordContainer">
+                        <div className="exampleOfTitle">EXAMPLE</div>
+                        <div className="exampleOfWordEn">{example_1}</div>
+                        <div className="exampleOfWordVn">{example_1_vn}</div>
                       </div>
-                    </div>
-                    <div className="examplesOfWordContainer">
-                      <div className="exampleOfTitle">EXAMPLE</div>
-                      <div className="exampleOfWordEn">{example_1}</div>
-                      <div className="exampleOfWordVn">{example_1_vn}</div>
                     </div>
                   </div>
                 </div>
+                {/* </label> */}
               </div>
-              {/* </label> */}
             </div>
-          </div>
-          <div className="checkBoxContainer">
-            <input
-              type="checkbox"
-              checked={isChecked}
-              onChange={() => clickHandler()}
-            />
-            <span className="checkBoxText">
-              Click here if you want to repeat
-            </span>
-          </div>
+          )}
+
+          {checkRepeat ? (
+            ""
+          ) : (
+            <div className="checkBoxContainer">
+              <input
+                type="checkbox"
+                checked={isChecked}
+                onChange={() => clickHandler()}
+              />
+              <span className="checkBoxText">
+                Click here if you want to repeat
+              </span>
+            </div>
+          )}
         </div>
       ) : (
         <div className="loading-container">
