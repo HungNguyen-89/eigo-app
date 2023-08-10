@@ -10,7 +10,7 @@ import { BsArrowRepeat } from "react-icons/bs";
 import { FiCheckSquare } from "react-icons/fi";
 import flagEng from "../../assets/Flag/Flag_of_the_United_Kingdom.png";
 import flagVn from "../../assets/Flag/Flag_of_Vietnam.png";
-import questionMark from "../../assets/QuestionMark/questionMark.png";
+import againLogo from "../../assets/Again/play-again.png";
 
 const getRandomIndexOfArray = (array) => {
   let d = [];
@@ -93,6 +93,7 @@ const VocabularyTranslateSentences = () => {
   const [correct, setCorrect] = useState(false);
   const [btnValue, setBtnValue] = useState(false);
   const [checkResultText, setCheckResultText] = useState("");
+  const [checkRepeat, setCheckRepeat] = useState(false);
 
   useEffect(() => {
     if (randomData.length > 0) {
@@ -132,13 +133,16 @@ const VocabularyTranslateSentences = () => {
     } else {
       setActiveNextBtn(true);
       setActiveBtn(false);
-      setWord("Do you want to again?");
+      setWord("");
       setPartOfSpeech("");
       setPhonetic("");
       setMeaning("");
       setExample_1("");
       setDefinitionOfWord("");
+      setExample_1_vn("Do you want to again?");
+      setNumberOfWhiteSpace("");
       setRandomData(getRandomIndexOfArray(dataTest.flashCardData));
+      setCheckRepeat(true);
     }
     console.log(randomData);
   };
@@ -158,6 +162,7 @@ const VocabularyTranslateSentences = () => {
     setCheckResultText("");
     setCorrect(false);
     setIsChecked(false);
+    setCheckRepeat(false);
   };
 
   const sentencesCheck = () => {
@@ -278,106 +283,122 @@ const VocabularyTranslateSentences = () => {
               Check
             </button>
           </div>
-          <div className="vocabularyTranslateFrontSide">
-            <div className="sentencesUp">
-              <div className="sentencesVn">
-                {/* <img src={questionMark} alt="" /> */}
-                {example_1_vn}
-              </div>
-              <div className={"sentencesSuggest"}>
-                {input ? (
-                  <div
-                    className="sentencesResult"
-                    dangerouslySetInnerHTML={{ __html: aMarked }}
-                  />
-                ) : (
-                  (() => {
-                    const arr = [];
-                    for (let i = 0; i < numberOfWhiteSpace + 1; i++) {
-                      arr.push(<div className="suggestItem">{i + 1}</div>);
-                    }
-                    return arr;
-                  })()
-                )}
-              </div>
-              <div className="sentencesEn">
-                {input ? (
-                  <div
-                    className="sentencesEnInput"
-                    dangerouslySetInnerHTML={{ __html: bMarked }}
-                  />
-                ) : (
-                  <input
-                    id="input-value"
-                    value={strValue}
-                    placeholder="Type here to input"
-                    onChange={(e) => inputValuecheck(e)}
-                  ></input>
-                )}
-              </div>
 
-              {input ? (
-                <div className="checkResultContainer">
-                  <div
-                    className={
-                      correct ? "checkResult correct" : "checkResult uncorrect"
-                    }
-                  >
-                    {checkResult}
-                  </div>
-                  <div
-                    className={
-                      correct
-                        ? "checkResultText textCorrect"
-                        : "checkResultText textWrong"
-                    }
-                  >
-                    {checkResultText}
-                  </div>
-                </div>
-              ) : (
-                ""
-              )}
+          {checkRepeat ? (
+            <div className="vocabularyTranslateFrontSideRepeat">
+              <p>Do you want to again?</p>
+              <img src={againLogo} />
             </div>
+          ) : (
+            <div className="vocabularyTranslateFrontSide">
+              <div className="sentencesUp">
+                <div className="sentencesVn">
+                  {/* <img src={questionMark} alt="" /> */}
+                  {example_1_vn}
+                </div>
 
-            <div className="sentencesDown">
-              {input ? (
-                <div className="explainWordContainer">
-                  <div className="explain_word_and_sound">
-                    <div className="explain_word">{word}</div>
-                    <div className="sound_of_explain_word">
-                      <AiFillSound />
+                <div className="sentencesSuggest">
+                  {input ? (
+                    <div
+                      className="sentencesResult"
+                      dangerouslySetInnerHTML={{ __html: aMarked }}
+                    />
+                  ) : (
+                    (() => {
+                      const arr = [];
+                      for (let i = 0; i < numberOfWhiteSpace + 1; i++) {
+                        arr.push(<div className="suggestItem">{i + 1}</div>);
+                      }
+                      return arr;
+                    })()
+                  )}
+                </div>
+
+                <div className="sentencesEn" id="sentencesEn">
+                  {input ? (
+                    <div
+                      className="sentencesEnInput"
+                      dangerouslySetInnerHTML={{ __html: bMarked }}
+                    />
+                  ) : (
+                    <input
+                      id="input-value"
+                      value={strValue}
+                      placeholder="Type here to input"
+                      onChange={(e) => inputValuecheck(e)}
+                    ></input>
+                  )}
+                </div>
+
+                {input ? (
+                  <div className="checkResultContainer">
+                    <div
+                      className={
+                        correct
+                          ? "checkResult correct"
+                          : "checkResult uncorrect"
+                      }
+                    >
+                      {checkResult}
+                    </div>
+                    <div
+                      className={
+                        correct
+                          ? "checkResultText textCorrect"
+                          : "checkResultText textWrong"
+                      }
+                    >
+                      {checkResultText}
                     </div>
                   </div>
+                ) : (
+                  ""
+                )}
+              </div>
 
-                  <div className="part_of_speech">{partOfSpeech}</div>
-                  <div className="phonetic_of_word">{phonetic}</div>
-                  <div className="definition_of_word">
-                    <img src={flagEng} alt="" />
-                    {definitionOfWord}
+              <div className="sentencesDown">
+                {input ? (
+                  <div className="explainWordContainer">
+                    <div className="explain_word_and_sound">
+                      <div className="explain_word">{word}</div>
+                      <div className="sound_of_explain_word">
+                        <AiFillSound />
+                      </div>
+                    </div>
+
+                    <div className="part_of_speech">{partOfSpeech}</div>
+                    <div className="phonetic_of_word">{phonetic}</div>
+                    <div className="definition_of_word">
+                      <img src={flagEng} alt="" />
+                      {definitionOfWord}
+                    </div>
+                    <div className="meaning_of_word">
+                      <img src={flagVn} alt="" />
+                      {meaning}
+                    </div>
                   </div>
-                  <div className="meaning_of_word">
-                    <img src={flagVn} alt="" />
-                    {meaning}
-                  </div>
-                </div>
-              ) : (
-                ""
-              )}
+                ) : (
+                  ""
+                )}
+              </div>
             </div>
-          </div>
+          )}
 
-          <div className="checkBoxContainer">
-            <input
-              type="checkbox"
-              id="checkbox"
-              checked={isChecked}
-              onChange={() => clickHandler()}
-            />
-            <span className="checkBoxText">
-              Click here if you want to repeat
-            </span>
-          </div>
+          {checkRepeat ? (
+            ""
+          ) : (
+            <div className="checkBoxContainer">
+              <input
+                type="checkbox"
+                id="checkbox"
+                checked={isChecked}
+                onChange={() => clickHandler()}
+              />
+              <span className="checkBoxText">
+                Click here if you want to repeat
+              </span>
+            </div>
+          )}
         </div>
       ) : (
         <div className="loading-container">
