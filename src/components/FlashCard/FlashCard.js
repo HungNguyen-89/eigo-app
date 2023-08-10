@@ -113,6 +113,7 @@ const FlashCard = () => {
       setMeaning(randomData[0].meaning);
       setExample_1(randomData[0].example_1);
       setDefinitionOfWord(randomData[0].definitionOfWord);
+      setExample_1_vn(randomData[0].example_1_vn);
     } else {
       setActiveNextBtn(true);
       setActiveBtn(false);
@@ -140,6 +141,7 @@ const FlashCard = () => {
     setMeaning(randomData[0].meaning);
     setExample_1(randomData[0].example_1);
     setDefinitionOfWord(randomData[0].definitionOfWord);
+    setExample_1_vn(randomData[0].example_1_vn);
     setActiveNextBtn(false);
     setActiveBtn(true);
   };
