@@ -15,7 +15,7 @@ body {
 
   .backgroundPlay {
     margin: auto;
-    margin-top: 3px;
+   //margin-top: 3px;
     width: 350px;
     height: 480px;
     position: relative;
@@ -78,18 +78,18 @@ body {
           display: flex;
           flex-direction: column;
 
-          .imageBackSide {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 10px;
-            width: 80%;
-            height: 75%;
-            overflow: hidden;
-            img {
-              height: 100%;
-            }
-          }
+          // .imageBackSide {
+          //   display: flex;
+          //   align-items: center;
+          //   justify-content: center;
+          //   margin-top: 10px;
+          //   width: 80%;
+          //   height: 75%;
+          //   overflow: hidden;
+          //   img {
+          //     height: 100%;
+          //   }
+          // }
 
           .txtBack {
             padding: 15px;
@@ -235,9 +235,9 @@ body {
   //   display: none;
   // }
 
-  @media (max-width: 576px) {
-    .backgroundPlay {
-      margin-top: 20px;
-    }
-  }
+  // @media (max-width: 576px) {
+  //   .backgroundPlay {
+  //     margin-top: 20px;
+  //   }
+  // }
 }
