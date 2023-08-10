@@ -8,16 +8,16 @@ body {
   font-family: sans-serif;
 }
 
-#flashCardContainer {
+.flashCardContainer {
   background: #404040;
   border: 1px solid black;
   height: calc(100vh - 65px);
 
-  #backgroundPlay {
+  .backgroundPlay {
     margin: auto;
-    margin-top: 35px;
+    margin-top: 3px;
     width: 350px;
-    height: 450px;
+    height: 480px;
     position: relative;
     z-index: 10;
 
@@ -25,14 +25,9 @@ body {
       width: 100%;
       height: 100%;
       transform-style: preserve-3d;
-      // transform: translate(-50%, -50%);
 
       cursor: pointer;
       z-index: 10;
-
-      // input {
-      //   display: none;
-      // }
 
       .flip-card {
         position: relative;
@@ -56,16 +51,8 @@ body {
           justify-content: center;
           gap: 8px;
           color: white;
-          // box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
 
-          //background-image: linear-gradient(#FFF8DC, #F0FFF0);
           .wordOfFrontSide {
-            // top: 165px;
-            // left: 30px;
-            // width: 300px;
-            // height: 50px;
-            // position: absolute;
-            // z-index: 10;
             font-size: 35px;
             font-family: Arial;
             font-weight: bold;
@@ -78,11 +65,8 @@ body {
 
         .flashCardBackSide {
           position: absolute;
-          //   display: flex;
-          //  align-items: center;
           width: 100%;
           height: 100%;
-          // text-align: center;
           background: lightblue;
           backface-visibility: hidden;
           z-index: 10;
@@ -91,75 +75,76 @@ body {
           display: flex;
           flex-direction: column;
           gap: 10px;
+          display: flex;
+          flex-direction: column;
 
-          .upOfBackSide {
+          .imageBackSide {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            gap: 10px;
-            height: 65%;
-            // border: solid black 1px;
+            justify-content: center;
+            margin-top: 10px;
+            width: 80%;
+            height: 75%;
+            overflow: hidden;
+            img {
+              height: 100%;
+            }
+          }
 
-            .imageBackSide {
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              margin-top: 10px;
-              width: 80%;
-              height: 75%;
-              overflow: hidden;
+          .txtBack {
+            padding: 15px;
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            word-break: break-word;
+            font-size: 20px;
+            font-family: Arial;
 
+            .definitionOfWord {
               img {
-                height: 100%;
+                height: 14px;
+                width: 18px;
+                margin-right: 5px;
               }
             }
-            .txtBack {
-              display: flex;
-              flex-direction: column;
-              //align-items: center;
-              //justify-content: center;
-              word-break: break-word;
-              width: 95%;
-              font-size: 18px;
-              font-family: Arial;
 
-              .definitionOfWord {
-                font-weight: 600;
-              }
-
-              .meaningOfWord {
-                color: red;
-                font-style: italic;
-                font-weight: 600;
+            .meaningOfWord {
+              img {
+                height: 14px;
+                width: 18px;
+                margin-right: 5px;
               }
             }
           }
 
-          .downOfBackSide {
+          .examplesOfWordContainer {
             display: flex;
             flex-direction: column;
-            padding-left: 10px;
+            padding: 15px;
+            padding-top: 0;
+            width: 100%;
+            gap: 5px;
 
-            .examplesOfWordContainer {
-              display: flex;
-              flex-direction: column;
-              align-items: flex-start;
+            .exampleOfTitle {
+              font-weight: 600;
+              font-size: 14px;
+              background-color: #001a66;
+              color: white;
+              padding: 3px;
+              text-align: center;
+              width: 85px;
+            }
 
-              .exampleOfTitle {
-                font-weight: 600;
-                text-decoration: underline;
-                font-size: 18px;
-              }
+            .exampleOfWordEn {
+              color: #001a66;
+              font-size: 18px;
+              font-weight: 600;
+              //font-style: italic;
+            }
 
-              .exampleOfWordEn {
-                color: blue;
-                font-size: 18px;
-                //font-style: italic;
-              }
-
-              .exampleOfWordVn {
-                font-style: italic;
-              }
+            .exampleOfWordVn {
+              font-style: italic;
+              font-size: 18px;
             }
           }
 
@@ -185,8 +170,8 @@ body {
     align-items: center;
     justify-content: center;
     margin: auto;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     width: 400px;
     position: relative;
     text-align: center;
@@ -207,28 +192,51 @@ body {
       width: 100px;
       cursor: pointer;
       font-weight: bold;
+
+      .buttonPlay-icon {
+        margin-right: 2px;
+        position: relative;
+        top: 2px;
+      }
     }
 
     .hiddenBtn {
       display: none;
     }
 
-    .buttonPlay:hover {
-      background-color: green;
+    // .buttonPlay:hover {
+    //   background-color: green;
+    //   color: white;
+    // }
+  }
+
+  .checkBoxContainer {
+    padding-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    input {
+      width: 15px;
+      height: 15px;
+    }
+
+    .checkBoxText {
+      padding-left: 5px;
       color: white;
     }
   }
 
-  #hiddenNumber {
-    width: 30px;
-    height: 30px;
-    margin: auto;
-    text-align: center;
-    display: none;
-  }
+  // #hiddenNumber {
+  //   width: 30px;
+  //   height: 30px;
+  //   margin: auto;
+  //   text-align: center;
+  //   display: none;
+  // }
 
   @media (max-width: 576px) {
-    #backgroundPlay {
+    .backgroundPlay {
       margin-top: 20px;
     }
   }

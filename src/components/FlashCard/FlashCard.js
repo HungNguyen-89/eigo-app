@@ -7,6 +7,8 @@ import Loading from "../Loading/Loading";
 import { TbListNumbers } from "react-icons/tb";
 import { AiFillSound } from "react-icons/ai";
 import { BsArrowRepeat } from "react-icons/bs";
+import flagEng from "../../assets/Flag/Flag_of_the_United_Kingdom.png";
+import flagVn from "../../assets/Flag/Flag_of_Vietnam.png";
 
 const getRandomIndexOfArray = (array) => {
   let d = [];
@@ -76,6 +78,7 @@ const FlashCard = () => {
   const [meaning, setMeaning] = useState("");
   const [example_1, setExample_1] = useState("");
   const [definitionOfWord, setDefinitionOfWord] = useState("");
+  const [example_1_vn, setExample_1_vn] = useState("");
 
   useEffect(() => {
     if (randomData.length > 0) {
@@ -85,6 +88,7 @@ const FlashCard = () => {
       setMeaning(randomData[0].meaning);
       setExample_1(randomData[0].example_1);
       setDefinitionOfWord(randomData[0].definitionOfWord);
+      setExample_1_vn(randomData[0].example_1_vn);
     }
   }, [loading]);
 
@@ -113,13 +117,11 @@ const FlashCard = () => {
       setActiveNextBtn(true);
       setActiveBtn(false);
       setWord("Do you want to again?");
-
       setPartOfSpeech("");
       setPhonetic("");
       setMeaning("");
       setExample_1("");
       setDefinitionOfWord("");
-
       setRandomData(getRandomIndexOfArray(dataTest.flashCardData));
     }
     return (
@@ -142,53 +144,22 @@ const FlashCard = () => {
     setActiveBtn(true);
   };
 
+  const [isChecked, setIsChecked] = useState(false);
+  const clickHandler = () => {
+    setIsChecked(!isChecked);
+
+    if (!isChecked) {
+      randomData.push(randomData[0]);
+    } else {
+      randomData.pop();
+    }
+    console.log(randomData);
+  };
+
   return (
     <>
       {loading && randomData.length > 0 ? (
-        <div id="flashCardContainer">
-          <div id="backgroundPlay">
-            <div className="label">
-              {/* <label> */}
-              <div
-                onClick={() => handleFlip()}
-                className={`flip-card ${activeCard ? "cardFlip" : ""}`}
-              >
-                {/*front*/}
-                <div className="flashCardFrontSide">
-                  <div className="wordOfFrontSide">{word}</div>
-                  <div className="partOfSpeech">{partOfSpeech}</div>
-                  <div className="phoneticOfWord">{phonetic}</div>
-                </div>
-                {/*back*/}
-                <div className="flashCardBackSide">
-                  <div className="upOfBackSide">
-                    <div className="imageBackSide">
-                      <img
-                        src="https://live.staticflickr.com/65535/53059383094_a30793af13_w.jpg"
-                        alt=""
-                      />
-                    </div>
-                    <div
-                      className={`txtBack ${activeBack ? "hiddenBack" : ""}`}
-                    >
-                      <div className="definitionOfWord">{definitionOfWord}</div>
-                      <div className="meaningOfWord">{meaning}</div>
-                    </div>
-                  </div>
-                  <div className="downOfBackSide">
-                    <div className="examplesOfWordContainer">
-                      <div className="exampleOfTitle">Example:</div>
-                      <div className="exampleOfWordEn">{example_1}</div>
-                      {/* <div className="exampleOfWordVn">
-                        Cô ấy đang rót đầy cốc của cô ấy
-                      </div> */}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/* </label> */}
-            </div>
-          </div>
+        <div className="flashCardContainer">
           <div className="buttonPlayContainer">
             <button
               className="buttonPlay"
@@ -229,7 +200,61 @@ const FlashCard = () => {
               Sound
             </button>
           </div>
-          <div id="hiddenNumber"></div>
+          <div className="backgroundPlay">
+            <div className="label">
+              {/* <label> */}
+              <div
+                onClick={() => handleFlip()}
+                className={`flip-card ${activeCard ? "cardFlip" : ""}`}
+              >
+                {/*front*/}
+                <div className="flashCardFrontSide">
+                  <div className="wordOfFrontSide">{word}</div>
+                  <div className="partOfSpeech">{partOfSpeech}</div>
+                  <div className="phoneticOfWord">{phonetic}</div>
+                </div>
+                {/*back*/}
+                <div className="flashCardBackSide">
+                  <div className="upOfBackSide">
+                    {/* <div className="imageBackSide">
+                      <img
+                        src="https://live.staticflickr.com/65535/53059383094_a30793af13_w.jpg"
+                        alt=""
+                      />
+                    </div> */}
+                    <div
+                      className={`txtBack ${activeBack ? "hiddenBack" : ""}`}
+                    >
+                      <div className="definitionOfWord">
+                        <img src={flagEng} alt="" />
+                        {definitionOfWord}
+                      </div>
+                      <div className="meaningOfWord">
+                        <img src={flagVn} alt="" />
+                        {meaning}
+                      </div>
+                    </div>
+                    <div className="examplesOfWordContainer">
+                      <div className="exampleOfTitle">EXAMPLE</div>
+                      <div className="exampleOfWordEn">{example_1}</div>
+                      <div className="exampleOfWordVn">{example_1_vn}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* </label> */}
+            </div>
+          </div>
+          <div className="checkBoxContainer">
+            <input
+              type="checkbox"
+              checked={isChecked}
+              onChange={() => clickHandler()}
+            />
+            <span className="checkBoxText">
+              Click here if you want to repeat
+            </span>
+          </div>
         </div>
       ) : (
         <div className="loading-container">
