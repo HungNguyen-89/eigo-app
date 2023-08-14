@@ -10,7 +10,7 @@ body {
 
 .vocabularyTranslateContainer {
   background: #404040;
-  border: 1px solid black;
+  //border: 1px solid black;
   height: calc(100vh - 65px);
   width: 100%;
 
@@ -254,7 +254,7 @@ body {
     margin: auto;
     padding-top: 5px;
     padding-bottom: 5px;
-    width: 400px;
+    width: 100%;
     position: relative;
     text-align: center;
     z-index: 10;
