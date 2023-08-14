@@ -94,6 +94,7 @@ const VocabularyTranslateSentences = () => {
   const [btnValue, setBtnValue] = useState(false);
   const [checkResultText, setCheckResultText] = useState("");
   const [checkRepeat, setCheckRepeat] = useState(false);
+  const [audio, setAudio] = useState("");
 
   useEffect(() => {
     if (randomData.length > 0) {
@@ -105,6 +106,7 @@ const VocabularyTranslateSentences = () => {
       setDefinitionOfWord(randomData[0].definitionOfWord);
       setExample_1_vn(randomData[0].example_1_vn);
       setNumberOfWhiteSpace(getNumberWhiteSpace(randomData[0].example_1));
+      setAudio(randomData[0].audio);
     }
   }, [loading]);
 
@@ -126,6 +128,7 @@ const VocabularyTranslateSentences = () => {
       setDefinitionOfWord(randomData[0].definitionOfWord);
       setExample_1_vn(randomData[0].example_1_vn);
       setNumberOfWhiteSpace(getNumberWhiteSpace(randomData[0].example_1));
+      setAudio(randomData[0].audio);
       setInput(false);
       setCheckResult("");
       setCheckResultText("");
@@ -156,6 +159,7 @@ const VocabularyTranslateSentences = () => {
     setDefinitionOfWord(randomData[0].definitionOfWord);
     setExample_1_vn(randomData[0].example_1_vn);
     setNumberOfWhiteSpace(getNumberWhiteSpace(randomData[0].example_1_vn));
+    setAudio(randomData[0].audio);
     setActiveNextBtn(false);
     setActiveBtn(true);
     setCheckResult("");
@@ -239,7 +243,12 @@ const VocabularyTranslateSentences = () => {
     } else {
       randomData.pop();
     }
-    console.log(randomData);
+    // console.log(randomData);
+  };
+
+  const Sound = () => {
+    console.log("1");
+    new Audio(audio).play();
   };
 
   return (
@@ -287,7 +296,7 @@ const VocabularyTranslateSentences = () => {
           {checkRepeat ? (
             <div className="vocabularyTranslateFrontSideRepeat">
               <p>Do you want to again?</p>
-              <img src={againLogo} />
+              <img src={againLogo} alt="" />
             </div>
           ) : (
             <div className="vocabularyTranslateFrontSide">
@@ -361,7 +370,10 @@ const VocabularyTranslateSentences = () => {
                   <div className="explainWordContainer">
                     <div className="explain_word_and_sound">
                       <div className="explain_word">{word}</div>
-                      <div className="sound_of_explain_word">
+                      <div
+                        className="sound_of_explain_word"
+                        onClick={() => Sound()}
+                      >
                         <AiFillSound />
                       </div>
                     </div>

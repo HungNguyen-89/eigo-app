@@ -91,6 +91,7 @@ const FlashCard = () => {
       setExample_1(randomData[0].example_1);
       setDefinitionOfWord(randomData[0].definitionOfWord);
       setExample_1_vn(randomData[0].example_1_vn);
+      setAudio(randomData[0].audio);
     }
   }, [loading]);
 
@@ -118,6 +119,7 @@ const FlashCard = () => {
       setExample_1(randomData[0].example_1);
       setDefinitionOfWord(randomData[0].definitionOfWord);
       setExample_1_vn(randomData[0].example_1_vn);
+      setAudio(randomData[0].audio);
     } else {
       setActiveNextBtn(true);
       setActiveBtn(false);
@@ -150,6 +152,7 @@ const FlashCard = () => {
     setActiveNextBtn(false);
     setActiveBtn(true);
     setCheckRepeat(false);
+    setAudio(randomData[0].audio);
   };
 
   const [isChecked, setIsChecked] = useState(false);
@@ -162,6 +165,12 @@ const FlashCard = () => {
       randomData.pop();
     }
     console.log(randomData);
+  };
+
+  const [audio, setAudio] = useState("");
+  const Sound = () => {
+    console.log("1");
+    new Audio(audio).play();
   };
 
   return (
@@ -200,6 +209,7 @@ const FlashCard = () => {
             </button>
             <button
               className={`buttonPlay ${activeNextBtn ? "hiddenBtn" : ""}`}
+              onClick={() => Sound()}
               // onClick={() => Continue()}
             >
               <span className="buttonPlay-icon">
