@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./VocabularyTranslateSentences.scss";
 import { TbPlayerTrackNextFilled } from "react-icons/tb";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Loading from "../Loading/Loading";
 import { TbListNumbers } from "react-icons/tb";
 import { AiFillSound } from "react-icons/ai";
@@ -158,10 +158,11 @@ const VocabularyTranslateSentences = () => {
     setExample_1(randomData[0].example_1);
     setDefinitionOfWord(randomData[0].definitionOfWord);
     setExample_1_vn(randomData[0].example_1_vn);
-    setNumberOfWhiteSpace(getNumberWhiteSpace(randomData[0].example_1_vn));
+    setNumberOfWhiteSpace(getNumberWhiteSpace(randomData[0].example_1));
     setAudio(randomData[0].audio);
     setActiveNextBtn(false);
     setActiveBtn(true);
+    setInput(false);
     setCheckResult("");
     setCheckResultText("");
     setCorrect(false);
@@ -251,17 +252,22 @@ const VocabularyTranslateSentences = () => {
     new Audio(audio).play();
   };
 
+  console.log(currentCase);
+
   return (
     <>
       {loading && randomData.length > 0 ? (
         <div className="vocabularyTranslateContainer">
           <div className="buttonPlayContainer">
-            <button className="buttonPlay">
-              <span className="buttonPlay-icon">
-                <TbListNumbers />
-              </span>
-              Back List
+            <button className="buttonPlayWithLink">
+              <Link to={`/vocabulary-translate-sentences/${currentCase}`}>
+                <span className="buttonPlay-icon-link">
+                  <TbListNumbers />
+                </span>
+                Back List
+              </Link>
             </button>
+
             <button
               className={`buttonPlay ${activeNextBtn ? "hiddenBtn" : ""}`}
               onClick={() => Continue()}
@@ -271,7 +277,6 @@ const VocabularyTranslateSentences = () => {
               </span>
               Next
             </button>
-
             <button
               className={`buttonPlay ${activeBtn ? "hiddenBtn" : ""}`}
               onClick={() => Repeat()}

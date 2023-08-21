@@ -4,8 +4,6 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { GiNotebook } from "react-icons/gi";
 import Loading from "../Loading/Loading";
-import { VscBook } from "react-icons/vsc";
-import { TbListNumbers } from "react-icons/tb";
 
 const ExamPageSingle = () => {
   const [currentCase, setCurrentCase] = useState("");
@@ -68,17 +66,6 @@ const ExamPageSingle = () => {
                   </div>
                 ))}
               </div>
-              {/* <div className="under-btn-container">
-                <Link
-                  className="previous-list-btn"
-                  //to={`/flashcards/${dataTest.id}`}
-                >
-                  <span className="previous-list-icon">
-                    <TbListNumbers />
-                  </span>
-                  Back
-                </Link>
-              </div> */}
             </div>
           </div>
         </>

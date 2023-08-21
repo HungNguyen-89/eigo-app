@@ -52,8 +52,6 @@
           display: flex;
           align-items: center;
           background-color: #00c660;
-          //  border: solid #00c660 3px;
-
           color: white;
           padding: 6px 20px;
           font-size: 20px;
@@ -101,13 +99,17 @@
 
     .exam-page-single-items {
       .exam-page-single-item {
+        padding: 5px 8px;
+
         .exam-page-single-item-name {
-          font-size: 20px;
+          font-size: 16px;
         }
 
         .examp-page-single-item-btn {
+
           .heading-links-item {
             font-size: 16px;
+            padding: 6px 15px;
 
             .heading-links-item-icon {
               font-size: 18px;

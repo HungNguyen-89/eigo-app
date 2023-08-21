@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import { useState } from "react";
 import "./WordGuessGame.scss";
 
 const WordGuessGame = () => {
@@ -31,12 +30,6 @@ const WordGuessGame = () => {
     return marked;
   }
 
-  function addToDOM(sentence) {
-    const div = document.createElement("div");
-    div.innerHTML = sentence;
-    document.body.appendChild(div);
-  }
-
   let a = words(str1);
   let b = words(str2);
 
@@ -60,9 +53,6 @@ const WordGuessGame = () => {
         <div id="image-background"></div>
         <div className="suggest">
           <div dangerouslySetInnerHTML={{ __html: aMarked.join(" ") }} />
-          {/* {(() => {
-            addToDOM(aMarked.join(" "));
-          })()} */}
         </div>
         <div className="inputText">
           <div dangerouslySetInnerHTML={{ __html: bMarked.join(" ") }} />
