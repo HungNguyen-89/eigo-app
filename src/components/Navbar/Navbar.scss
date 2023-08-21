@@ -35,7 +35,7 @@
     }
   }
 
-   .popUpBtn {
+  .popUpBtn {
     position: absolute;
     top: 15px;
     right: 10px;
@@ -50,7 +50,7 @@
   //   gap: 2rem;
 
   //   .navbar-item {
-      
+
   //     p {
   //       font-size: 22px;
   //       font-family: Arial, Helvetica, sans-serif;
@@ -68,7 +68,7 @@
 
 @media (max-width: 1400px) {
   .navbar-container {
-    justify-content: center;
+    //justify-content: center;
     .navbar-links {
       display: none;
     }
@@ -77,14 +77,14 @@
 
 @media (max-width: 760px) {
   .navbar-container {
-    justify-content: center;
-    
+    // justify-content: center;
+
     .navbar-logo {
       //flex-direction: column;
       gap: 8px;
       justify-content: center;
-     // flex-direction: column;
-     cursor: pointer;
+      // flex-direction: column;
+      cursor: pointer;
 
       // img {
       //   // margin-top: 5px;
@@ -96,7 +96,7 @@
         //color: white;
         //font-size: 12px;
         font-weight: 600;
-       // text-shadow: 2px 2px red;
+        // text-shadow: 2px 2px red;
       }
     }
   }
