@@ -3,7 +3,7 @@ import "./PopUp.scss";
 import { Route, Routes } from "react-router-dom";
 import FlashCard from "../FlashCard/FlashCard";
 import WordGuessGame from "../WordGuessGame/WordGuessGame";
-import Footer from "../Footer";
+//import Footer from "../Footer";
 import Navbar from "../Navbar/Navbar";
 import NavbarMobile from "../Navbar/NavbarMobile";
 import ExamPageAll from "../ExamPage/ExamPageAll";
@@ -42,7 +42,7 @@ const PopUp = () => {
               element={<VocabularyTranslateSentences />}
             />
           </Routes>
-          <Footer />
+          {/* <Footer /> */}
         </div>
       ) : (
         <div className="main">

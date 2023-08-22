@@ -11,7 +11,7 @@ body {
 .vocabularyTranslateContainer {
   background: #404040;
   //border: 1px solid black;
-  height: calc(100vh - 130px);
+  height: calc(100vh - 65px);
   width: 100%;
 
   .vocabularyTranslateFrontSideRepeat {
@@ -274,7 +274,7 @@ body {
       width: 100px;
       cursor: pointer;
       font-weight: bold;
-      color: #001a66;
+      color: black;
 
       .buttonPlay-icon {
         margin-right: 2px;
@@ -299,7 +299,7 @@ body {
       font-weight: bold;
 
       a{
-        color:#001a66;
+        color:black;
 
         .buttonPlay-icon-link {
           margin-right: 2px;
