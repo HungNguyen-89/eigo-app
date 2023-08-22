@@ -42,7 +42,7 @@
         // // justify-content: center;
         background-color: #001a66;
         position: sticky;
-        position: -webkit-sticky;
+        // position: -webkit-sticky;
         top: 0;
         left: 0;
         width: 100%;
@@ -98,7 +98,7 @@
       .popup {
         .popup-header {
           padding: 0 3%;
-          //justify-content: center;
+          justify-content: center;
         }
       }
     }
