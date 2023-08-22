@@ -1,17 +1,14 @@
 import React, { useState } from "react";
 import "./PopUp.scss";
 import { Route, Routes } from "react-router-dom";
-import Test from "../Test/Test";
 import FlashCard from "../FlashCard/FlashCard";
 import WordGuessGame from "../WordGuessGame/WordGuessGame";
 import Footer from "../Footer";
 import Navbar from "../Navbar/Navbar";
-import NavbarHeading from "../NavbarHeading/NavbarHeading";
 import NavbarMobile from "../Navbar/NavbarMobile";
 import ExamPageAll from "../ExamPage/ExamPageAll";
 import ExamPageSingle from "../ExamPage/ExamPageSingle";
 import { MdOutlineClose } from "react-icons/md";
-import Logo from "../../assets/Logo/logo_01.png";
 import HomPage from "../HomePage";
 import VocabularyPageSingle from "../VocabularyPageSingle/VocabularyPageSingle";
 import VocabularyTranslateSentences from "../VocabularyTranslateSentences/VocabularyTranslateSentences";
@@ -45,14 +42,14 @@ const PopUp = () => {
               element={<VocabularyTranslateSentences />}
             />
           </Routes>
-          {/* <Footer /> */}
+          <Footer />
         </div>
       ) : (
         <div className="main">
           <div className="popup">
             <div className="popup-header">
               <div className="popup-navbar-logo">
-                <img src={Logo} />
+                <img src="https://i.ibb.co/p2kh5vT/logo-01.png" />
                 <p>EIGO</p>
               </div>
               <div className="popup-right">
