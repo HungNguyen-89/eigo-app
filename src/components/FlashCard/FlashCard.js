@@ -7,9 +7,6 @@ import Loading from "../Loading/Loading";
 import { TbListNumbers } from "react-icons/tb";
 import { AiFillSound } from "react-icons/ai";
 import { BsArrowRepeat } from "react-icons/bs";
-import flagEng from "../../assets/Flag/Flag_of_the_United_Kingdom.png";
-import flagVn from "../../assets/Flag/Flag_of_Vietnam.png";
-import againLogo from "../../assets/Again/play-again.png";
 
 const getRandomIndexOfArray = (array) => {
   let d = [];
@@ -221,7 +218,7 @@ const FlashCard = () => {
           {checkRepeat ? (
             <div className="backgroundPlayRepeat">
               <p>Do you want to again?</p>
-              <img src={againLogo} />
+              <img src="https://i.ibb.co/NgvnR7F/play-again.png" />
             </div>
           ) : (
             <div className="backgroundPlay">
@@ -250,11 +247,17 @@ const FlashCard = () => {
                         className={`txtBack ${activeBack ? "hiddenBack" : ""}`}
                       >
                         <div className="definitionOfWord">
-                          <img src={flagEng} alt="" />
+                          <img
+                            src="https://i.ibb.co/LkMP0Z8/Flag-of-the-United-Kingdom.png"
+                            alt=""
+                          />
                           {definitionOfWord}
                         </div>
                         <div className="meaningOfWord">
-                          <img src={flagVn} alt="" />
+                          <img
+                            src="https://i.ibb.co/hCsgCjz/Flag-of-Vietnam.png"
+                            alt=""
+                          />
                           {meaning}
                         </div>
                       </div>

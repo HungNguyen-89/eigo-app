@@ -8,9 +8,6 @@ import { TbListNumbers } from "react-icons/tb";
 import { AiFillSound } from "react-icons/ai";
 import { BsArrowRepeat } from "react-icons/bs";
 import { FiCheckSquare } from "react-icons/fi";
-import flagEng from "../../assets/Flag/Flag_of_the_United_Kingdom.png";
-import flagVn from "../../assets/Flag/Flag_of_Vietnam.png";
-import againLogo from "../../assets/Again/play-again.png";
 
 const getRandomIndexOfArray = (array) => {
   let d = [];
@@ -301,7 +298,7 @@ const VocabularyTranslateSentences = () => {
           {checkRepeat ? (
             <div className="vocabularyTranslateFrontSideRepeat">
               <p>Do you want to again?</p>
-              <img src={againLogo} alt="" />
+              <img src="https://i.ibb.co/NgvnR7F/play-again.png" alt="" />
             </div>
           ) : (
             <div className="vocabularyTranslateFrontSide">
@@ -386,11 +383,17 @@ const VocabularyTranslateSentences = () => {
                     <div className="part_of_speech">{partOfSpeech}</div>
                     <div className="phonetic_of_word">{phonetic}</div>
                     <div className="definition_of_word">
-                      <img src={flagEng} alt="" />
+                      <img
+                        src="https://i.ibb.co/LkMP0Z8/Flag-of-the-United-Kingdom.png"
+                        alt=""
+                      />
                       {definitionOfWord}
                     </div>
                     <div className="meaning_of_word">
-                      <img src={flagVn} alt="" />
+                      <img
+                        src="https://i.ibb.co/hCsgCjz/Flag-of-Vietnam.png"
+                        alt=""
+                      />
                       {meaning}
                     </div>
                   </div>
