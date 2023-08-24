@@ -17,6 +17,10 @@ export const routes = [
         name: "Adverb",
         link: "/vocabulary-translate-sentences/adv",
       },
+      {
+        name: "Phrasal verb",
+        link: "/vocabulary-translate-sentences/phrasal",
+      },
     ],
   },
   {
@@ -35,6 +39,10 @@ export const routes = [
       {
         name: "Adverb",
         link: "/flashcards/adv",
+      },
+      {
+        name: "Phrasal verb",
+        link: "/vocabulary-translate-sentences/phrasal",
       },
       // {
       //   name: "Phrasal verbs",

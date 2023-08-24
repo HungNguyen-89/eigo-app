@@ -17,8 +17,8 @@ const ExamPageSingle = () => {
       setCurrentCase("verb");
     } else if (id.includes("adv")) {
       setCurrentCase("adv");
-    } else if (id.includes("n3")) {
-      setCurrentCase(3);
+    } else if (id.includes("phrasal")) {
+      setCurrentCase("phrasal");
     } else if (id.includes("n4")) {
       setCurrentCase(4);
     } else if (id.includes("n5")) {
