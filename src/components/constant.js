@@ -42,7 +42,7 @@ export const routes = [
       },
       {
         name: "Phrasal verb",
-        link: "/vocabulary-translate-sentences/phrasal",
+        link: "/flashcards/phrasal",
       },
       // {
       //   name: "Phrasal verbs",
