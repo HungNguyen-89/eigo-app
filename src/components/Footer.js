@@ -6,8 +6,10 @@ const Footer = () => {
   return (
     <div className="footer-container">
       <div className="footer-text">
-        <FaRegCopyright />
-        2023, Hachi-IT. All Rights Reserved.
+        <span className="footer-text-copyright">
+          <FaRegCopyright />
+        </span>
+        <span>2023, Hachi-IT. All Rights Reserved.</span>
       </div>
       <div className="footer-logo">
         <img src="https://i.ibb.co/xXXfxKP/facebook.png" alt="" />
