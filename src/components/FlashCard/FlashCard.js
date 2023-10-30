@@ -166,7 +166,7 @@ const FlashCard = () => {
 
   const [audio, setAudio] = useState("");
   const Sound = () => {
-    console.log("1");
+    console.log(audio);
     new Audio(audio).play();
   };
 
@@ -175,25 +175,37 @@ const FlashCard = () => {
       {loading && randomData.length > 0 ? (
         <div className="flashCardContainer">
           <div className="buttonPlayContainer">
-            <button
-              className="buttonPlay"
-              // onClick={() => Continue()}
-            >
-              <span className="buttonPlay-icon">
-                <TbListNumbers />
-              </span>
-              Back List
-            </button>
+            <div className="buttonPlay">
+              <button className="buttonPlay-icon">
+                <img alt="" src="https://i.imgur.com/l1P6cvL.png" />
+              </button>
+              <span className="buttonPlay-title">List</span>
+            </div>
 
-            <button
-              className={`buttonPlay ${activeNextBtn ? "hiddenBtn" : ""}`}
-              onClick={() => Continue()}
-            >
-              <span className="buttonPlay-icon">
-                <TbPlayerTrackNextFilled />
-              </span>
-              Next
-            </button>
+            <div className={`buttonPlay ${activeNextBtn ? "hiddenBtn" : ""}`}>
+              <button className="buttonPlay-icon" onClick={() => Sound()}>
+                <img alt="" src="https://i.imgur.com/PSKZ6TI.png" />
+              </button>
+              <span className="buttonPlay-title">Sound</span>
+            </div>
+
+            <div className={`buttonPlay ${activeNextBtn ? "hiddenBtn" : ""}`}>
+              <button className="buttonPlay-icon">
+                <img alt="" src="https://i.imgur.com/oWc5Idu.png" />
+              </button>
+              <span className="buttonPlay-title">Repeat</span>
+            </div>
+
+            <div className={`buttonPlay ${activeNextBtn ? "hiddenBtn" : ""}`}>
+              <button className="buttonPlay-icon" onClick={() => Continue()}>
+                <img
+                  id="arrow-right-btn"
+                  alt=""
+                  src="https://i.imgur.com/SguQ9cG.png"
+                />
+              </button>
+              <span className="buttonPlay-title">Next</span>
+            </div>
 
             <button
               className={`buttonPlay ${activeBtn ? "hiddenBtn" : ""}`}
@@ -204,21 +216,11 @@ const FlashCard = () => {
               </span>
               Again
             </button>
-            <button
-              className={`buttonPlay ${activeNextBtn ? "hiddenBtn" : ""}`}
-              onClick={() => Sound()}
-              // onClick={() => Continue()}
-            >
-              <span className="buttonPlay-icon">
-                <AiFillSound />
-              </span>
-              Sound
-            </button>
           </div>
           {checkRepeat ? (
             <div className="backgroundPlayRepeat">
               <p>Do you want to again?</p>
-              <img src="https://i.ibb.co/NgvnR7F/play-again.png" />
+              <img alt="" src="https://i.ibb.co/NgvnR7F/play-again.png" />
             </div>
           ) : (
             <div className="backgroundPlay">
@@ -230,6 +232,7 @@ const FlashCard = () => {
                 >
                   {/*front*/}
                   <div className="flashCardFrontSide">
+                    <img src="https://i.imgur.com/onE4Lxr.png" alt="" />
                     <div className="wordOfFrontSide">{word}</div>
                     <div className="partOfSpeech">{partOfSpeech}</div>
                     <div className="phoneticOfWord">{phonetic}</div>
@@ -237,20 +240,11 @@ const FlashCard = () => {
                   {/*back*/}
                   <div className="flashCardBackSide">
                     <div className="upOfBackSide">
-                      {/* <div className="imageBackSide">
-                      <img
-                        src="https://live.staticflickr.com/65535/53059383094_a30793af13_w.jpg"
-                        alt=""
-                      />
-                    </div> */}
                       <div
                         className={`txtBack ${activeBack ? "hiddenBack" : ""}`}
                       >
                         <div className="definitionOfWord">
-                          <img
-                            src="https://i.ibb.co/LkMP0Z8/Flag-of-the-United-Kingdom.png"
-                            alt=""
-                          />
+                          <img src="https://i.imgur.com/jlpEhW2.png" alt="" />
                           {definitionOfWord}
                         </div>
                         <div className="meaningOfWord">

@@ -10,7 +10,22 @@ const HomPage = () => {
   return (
     <>
       <section className="category-container">
-        <section className="category">
+        <div className="content">
+          <h3>
+            Nippon Dict - Hệ thống từ điển từ vựng, ngữ pháp dùng ôn luyện JLPT
+          </h3>
+        </div>
+        <div className="box-search">
+          {/* <FaSearch size={"2rem"} color={"#777"} /> */}
+          <input type="text" placeholder="Tìm kiếm từ vựng, ngữ pháp" />
+          {/* <span>|</span> */}
+          {/* <FaLanguage size={"3rem"} color={"#777"} /> */}
+          {/* <select name="" id="">
+            <option value="">Nhật - Việt</option>
+            <option value="">Việt - Nhật</option>
+          </select> */}
+        </div>
+        {/* <section className="category">
           <Link to="/" className="box">
             <img src={photoVocabulary} alt="" />
             <h3>Từ vựng qua hình ảnh</h3>
@@ -28,7 +43,7 @@ const HomPage = () => {
             <img src={photoGames} alt="" />
             <h3>Trò chơi trí tuệ</h3>
           </Link>
-        </section>
+        </section> */}
       </section>
     </>
   );
