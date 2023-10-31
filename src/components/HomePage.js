@@ -1,50 +1,57 @@
 import React from "react";
 import "./HomPage.scss";
-import { Link } from "react-router-dom";
-import photoVocabulary from "../assets/HomPage/category-1.png";
-import photoGrammar from "../assets/HomPage/category-2.png";
-import photoFlashCard from "../assets/HomPage/category-3.png";
-import photoGames from "../assets/HomPage/category-4.png";
 
 const HomPage = () => {
   return (
     <>
-      <section className="category-container">
-        <div className="content">
-          <h3>
-            Nippon Dict - Hệ thống từ điển từ vựng, ngữ pháp dùng ôn luyện JLPT
-          </h3>
+      <div className="hompage-container">
+        <div className="dictionary-content">DICTIONARY</div>
+        <div className="dictionary-box-search">
+          <div className="dictionary-box-icon">
+            <img alt="" src="https://i.imgur.com/1r8PmNM.png" />
+          </div>
+          <input type="text" placeholder="Type here to search" />
+          <button className="dictionary-box-search-btn">Search</button>
         </div>
-        <div className="box-search">
-          {/* <FaSearch size={"2rem"} color={"#777"} /> */}
-          <input type="text" placeholder="Tìm kiếm từ vựng, ngữ pháp" />
-          {/* <span>|</span> */}
-          {/* <FaLanguage size={"3rem"} color={"#777"} /> */}
-          {/* <select name="" id="">
-            <option value="">Nhật - Việt</option>
-            <option value="">Việt - Nhật</option>
-          </select> */}
+        <div className="hompage-category-container">
+          <div className="hompage-category">
+            <div className="hompage-category-icon">
+              <img alt="" src="https://i.imgur.com/a5yyEF7.png" />
+            </div>
+            <div className="hompage-category-title">
+              <div className="hompage-category-title-up">Learn with</div>
+              <div className="hompage-category-title-down">Flash cards</div>
+            </div>
+          </div>
+          <div className="hompage-category">
+            <div className="hompage-category-icon">
+              <img alt="" src="https://i.imgur.com/7rdFu9Y.png" />
+            </div>
+            <div className="hompage-category-title">
+              <div className="hompage-category-title-up">Vocabulary</div>
+              <div className="hompage-category-title-down">with Write</div>
+            </div>
+          </div>
+          <div className="hompage-category">
+            <div className="hompage-category-icon">
+              <img alt="" src="https://i.imgur.com/HqHytgq.png" />
+            </div>
+            <div className="hompage-category-title">
+              <div className="hompage-category-title-up">Test with</div>
+              <div className="hompage-category-title-down">Random</div>
+            </div>
+          </div>
+          <div className="hompage-category">
+            <div className="hompage-category-icon">
+              <img alt="" src="https://i.imgur.com/iLedEjN.png" />
+            </div>
+            <div className="hompage-category-title">
+              <div className="hompage-category-title-up">Funny</div>
+              <div className="hompage-category-title-down">Game</div>
+            </div>
+          </div>
         </div>
-        {/* <section className="category">
-          <Link to="/" className="box">
-            <img src={photoVocabulary} alt="" />
-            <h3>Từ vựng qua hình ảnh</h3>
-          </Link>
-          <Link to="/" className="box">
-            <img src={photoGrammar} alt="" />
-            <h3>Ngữ pháp qua hình ảnh</h3>
-          </Link>
-
-          <Link to="/" className="box">
-            <img src={photoFlashCard} alt="" />
-            <h3>Flash Cards</h3>
-          </Link>
-          <Link to="/" className="box">
-            <img src={photoGames} alt="" />
-            <h3>Trò chơi trí tuệ</h3>
-          </Link>
-        </section> */}
-      </section>
+      </div>
     </>
   );
 };
