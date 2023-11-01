@@ -256,7 +256,7 @@ const VocabularyTranslateSentences = () => {
       {loading && randomData.length > 0 ? (
         <div className="vocabularyTranslateContainer">
           <div className="buttonPlayContainer">
-            <button className="buttonPlayWithLink">
+            {/* <button className="buttonPlayWithLink">
               <Link to={`/vocabulary-translate-sentences/${currentCase}`}>
                 <span className="buttonPlay-icon-link">
                   <TbListNumbers />
@@ -264,7 +264,6 @@ const VocabularyTranslateSentences = () => {
                 Back List
               </Link>
             </button>
-
             <button
               className={`buttonPlay ${activeNextBtn ? "hiddenBtn" : ""}`}
               onClick={() => Continue()}
@@ -292,6 +291,48 @@ const VocabularyTranslateSentences = () => {
                 <FiCheckSquare />
               </span>
               Check
+            </button> */}
+
+            <div className="buttonPlay">
+              <button className="buttonPlay-icon">
+                <img alt="" src="https://i.imgur.com/l1P6cvL.png" />
+              </button>
+              <span className="buttonPlay-title">List</span>
+            </div>
+
+            <div className={`buttonPlay ${activeNextBtn ? "hiddenBtn" : ""}`}>
+              <button className="buttonPlay-icon">
+                <img alt="" src="https://i.imgur.com/oWc5Idu.png" />
+              </button>
+              <span className="buttonPlay-title">Repeat</span>
+            </div>
+
+            <div className={`buttonPlay ${activeNextBtn ? "hiddenBtn" : ""}`}>
+              <button className="buttonPlay-icon">
+                <img alt="" src="https://i.imgur.com/a6oR0KI.png" />
+              </button>
+              <span className="buttonPlay-title">Check</span>
+            </div>
+
+            <div className={`buttonPlay ${activeNextBtn ? "hiddenBtn" : ""}`}>
+              <button className="buttonPlay-icon" onClick={() => Continue()}>
+                <img
+                  id="arrow-right-btn"
+                  alt=""
+                  src="https://i.imgur.com/SguQ9cG.png"
+                />
+              </button>
+              <span className="buttonPlay-title">Next</span>
+            </div>
+
+            <button
+              className={`buttonPlay ${activeBtn ? "hiddenBtn" : ""}`}
+              onClick={() => Repeat()}
+            >
+              <span className="buttonPlay-icon">
+                <BsArrowRepeat />
+              </span>
+              Again
             </button>
           </div>
 
@@ -303,13 +344,12 @@ const VocabularyTranslateSentences = () => {
           ) : (
             <div className="vocabularyTranslateFrontSide">
               <div className="sentencesUp">
-                <div className="sentencesVn">
-                  {/* <img src={questionMark} alt="" /> */}
-                  {example_1_vn}
-                </div>
-
-                <div className="sentencesSuggest">
-                  {input ? (
+                <div className="sentencesVn-suggest">
+                  <div className="sentencesVn">{example_1_vn}</div>
+                  <div className="sentencesSuggest">
+                    <img alt="" src="https://i.imgur.com/YIYZZiN.png" />
+                    <div className="sentencesSuggestTitle">Suggest</div>
+                    {/* {input ? (
                     <div
                       className="sentencesResult"
                       dangerouslySetInnerHTML={{ __html: aMarked }}
@@ -322,7 +362,8 @@ const VocabularyTranslateSentences = () => {
                       }
                       return arr;
                     })()
-                  )}
+                  )} */}
+                  </div>{" "}
                 </div>
 
                 <div className="sentencesEn" id="sentencesEn">
@@ -332,12 +373,12 @@ const VocabularyTranslateSentences = () => {
                       dangerouslySetInnerHTML={{ __html: bMarked }}
                     />
                   ) : (
-                    <input
+                    <textarea
                       id="input-value"
                       value={strValue}
                       placeholder="Type here to input"
                       onChange={(e) => inputValuecheck(e)}
-                    ></input>
+                    ></textarea>
                   )}
                 </div>
 
