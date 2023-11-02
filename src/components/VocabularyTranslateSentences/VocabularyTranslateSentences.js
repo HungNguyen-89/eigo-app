@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./VocabularyTranslateSentences.scss";
-import { TbPlayerTrackNextFilled } from "react-icons/tb";
+
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import Loading from "../Loading/Loading";
-import { TbListNumbers } from "react-icons/tb";
 import { AiFillSound } from "react-icons/ai";
 import { BsArrowRepeat } from "react-icons/bs";
-import { FiCheckSquare } from "react-icons/fi";
 
 const getRandomIndexOfArray = (array) => {
   let d = [];
@@ -255,6 +253,121 @@ const VocabularyTranslateSentences = () => {
     <>
       {loading && randomData.length > 0 ? (
         <div className="vocabularyTranslateContainer">
+          {checkRepeat ? (
+            <div className="vocabularyTranslateFrontSideRepeat">
+              <p>Do you want to again?</p>
+              <img src="https://i.ibb.co/NgvnR7F/play-again.png" alt="" />
+            </div>
+          ) : (
+            <div className="vocabularyTranslateFrontSide">
+              <div className="sentencesUp">
+                <div className="sentencesVn-suggest">
+                  <div className="sentencesVn">{example_1_vn}</div>
+                  <div className="sentencesSuggest">
+                    <span className="characters-number">8</span>
+                    <img alt="" src="https://i.imgur.com/YIYZZiN.png" />
+                    <div className="sentencesSuggestTitle">characters</div>
+                    {/* {input ? (
+                    <div
+                      className="sentencesResult"
+                      dangerouslySetInnerHTML={{ __html: aMarked }}
+                    />
+                  ) : (
+                    (() => {
+                      const arr = [];
+                      for (let i = 0; i < numberOfWhiteSpace + 1; i++) {
+                        arr.push(<div className="suggestItem">{i + 1}</div>);
+                      }
+                      return arr;
+                    })()
+                  )} */}
+                  </div>
+                </div>
+
+                <div className="sentencesEn-container">
+                  {input ? (
+                    <div
+                      className="sentencesEnInput"
+                      dangerouslySetInnerHTML={{ __html: bMarked }}
+                    />
+                  ) : (
+                    <textarea
+                      id="input-value"
+                      value={strValue}
+                      placeholder="Type here to input"
+                      onChange={(e) => inputValuecheck(e)}
+                    ></textarea>
+                  )}
+                </div>
+
+                {/* {input ? (
+                  <div className="checkResultContainer">
+                    <div
+                      className={
+                        correct
+                          ? "checkResult correct"
+                          : "checkResult uncorrect"
+                      }
+                    >
+                      {checkResult}
+                    </div>
+                    <div
+                      className={
+                        correct
+                          ? "checkResultText textCorrect"
+                          : "checkResultText textWrong"
+                      }
+                    >
+                      {checkResultText}
+                    </div>
+                  </div>
+                ) : (
+                  ""
+                )} */}
+              </div>
+
+              <div className="sentencesDown">
+                {input ? (
+                  <div className="explainWordContainer">
+                    <div className="explain_word_and_sound">
+                      <div className="explain_word">{word}</div>
+                      <div
+                        className="sound_of_explain_word"
+                        onClick={() => Sound()}
+                      >
+                        <AiFillSound />
+                      </div>
+                    </div>
+
+                    <div className="part_of_speech">{partOfSpeech}</div>
+                    <div className="phonetic_of_word">{phonetic}</div>
+                    <div className="definition_of_word">
+                      <img
+                        src="https://i.ibb.co/LkMP0Z8/Flag-of-the-United-Kingdom.png"
+                        alt=""
+                      />
+                      {definitionOfWord}
+                    </div>
+                    <div className="meaning_of_word">
+                      <img
+                        src="https://i.ibb.co/hCsgCjz/Flag-of-Vietnam.png"
+                        alt=""
+                      />
+                      {meaning}
+                    </div>
+                  </div>
+                ) : (
+                  ""
+                )}
+              </div>
+
+              <div className="serial-number-and-content-title">
+                <div className="serial-number">5/35</div>
+                <div className="content-title">VERB PART 1</div>
+              </div>
+            </div>
+          )}
+
           <div className="buttonPlayContainer">
             {/* <button className="buttonPlayWithLink">
               <Link to={`/vocabulary-translate-sentences/${currentCase}`}>
@@ -295,7 +408,12 @@ const VocabularyTranslateSentences = () => {
 
             <div className="buttonPlay">
               <button className="buttonPlay-icon">
-                <img alt="" src="https://i.imgur.com/l1P6cvL.png" />
+                <Link
+                  className="button-back-list"
+                  to={`/vocabulary-translate-sentences/${currentCase}`}
+                >
+                  <img alt="" src="https://i.imgur.com/l1P6cvL.png" />
+                </Link>
               </button>
               <span className="buttonPlay-title">List</span>
             </div>
@@ -308,7 +426,12 @@ const VocabularyTranslateSentences = () => {
             </div>
 
             <div className={`buttonPlay ${activeNextBtn ? "hiddenBtn" : ""}`}>
-              <button className="buttonPlay-icon">
+              <button
+                className="buttonPlay-icon"
+                // className={`buttonPlay ${activeNextBtn ? "hiddenBtn" : ""}`}
+                disabled={!btnValue}
+                onClick={() => sentencesCheck()}
+              >
                 <img alt="" src="https://i.imgur.com/a6oR0KI.png" />
               </button>
               <span className="buttonPlay-title">Check</span>
@@ -336,116 +459,7 @@ const VocabularyTranslateSentences = () => {
             </button>
           </div>
 
-          {checkRepeat ? (
-            <div className="vocabularyTranslateFrontSideRepeat">
-              <p>Do you want to again?</p>
-              <img src="https://i.ibb.co/NgvnR7F/play-again.png" alt="" />
-            </div>
-          ) : (
-            <div className="vocabularyTranslateFrontSide">
-              <div className="sentencesUp">
-                <div className="sentencesVn-suggest">
-                  <div className="sentencesVn">{example_1_vn}</div>
-                  <div className="sentencesSuggest">
-                    <img alt="" src="https://i.imgur.com/YIYZZiN.png" />
-                    <div className="sentencesSuggestTitle">Suggest</div>
-                    {/* {input ? (
-                    <div
-                      className="sentencesResult"
-                      dangerouslySetInnerHTML={{ __html: aMarked }}
-                    />
-                  ) : (
-                    (() => {
-                      const arr = [];
-                      for (let i = 0; i < numberOfWhiteSpace + 1; i++) {
-                        arr.push(<div className="suggestItem">{i + 1}</div>);
-                      }
-                      return arr;
-                    })()
-                  )} */}
-                  </div>{" "}
-                </div>
-
-                <div className="sentencesEn" id="sentencesEn">
-                  {input ? (
-                    <div
-                      className="sentencesEnInput"
-                      dangerouslySetInnerHTML={{ __html: bMarked }}
-                    />
-                  ) : (
-                    <textarea
-                      id="input-value"
-                      value={strValue}
-                      placeholder="Type here to input"
-                      onChange={(e) => inputValuecheck(e)}
-                    ></textarea>
-                  )}
-                </div>
-
-                {input ? (
-                  <div className="checkResultContainer">
-                    <div
-                      className={
-                        correct
-                          ? "checkResult correct"
-                          : "checkResult uncorrect"
-                      }
-                    >
-                      {checkResult}
-                    </div>
-                    <div
-                      className={
-                        correct
-                          ? "checkResultText textCorrect"
-                          : "checkResultText textWrong"
-                      }
-                    >
-                      {checkResultText}
-                    </div>
-                  </div>
-                ) : (
-                  ""
-                )}
-              </div>
-
-              <div className="sentencesDown">
-                {input ? (
-                  <div className="explainWordContainer">
-                    <div className="explain_word_and_sound">
-                      <div className="explain_word">{word}</div>
-                      <div
-                        className="sound_of_explain_word"
-                        onClick={() => Sound()}
-                      >
-                        <AiFillSound />
-                      </div>
-                    </div>
-
-                    <div className="part_of_speech">{partOfSpeech}</div>
-                    <div className="phonetic_of_word">{phonetic}</div>
-                    <div className="definition_of_word">
-                      <img
-                        src="https://i.ibb.co/LkMP0Z8/Flag-of-the-United-Kingdom.png"
-                        alt=""
-                      />
-                      {definitionOfWord}
-                    </div>
-                    <div className="meaning_of_word">
-                      <img
-                        src="https://i.ibb.co/hCsgCjz/Flag-of-Vietnam.png"
-                        alt=""
-                      />
-                      {meaning}
-                    </div>
-                  </div>
-                ) : (
-                  ""
-                )}
-              </div>
-            </div>
-          )}
-
-          {checkRepeat ? (
+          {/* {checkRepeat ? (
             ""
           ) : (
             <div className="checkBoxContainer">
@@ -459,7 +473,7 @@ const VocabularyTranslateSentences = () => {
                 Click here if you want to repeat
               </span>
             </div>
-          )}
+          )} */}
         </div>
       ) : (
         <div className="loading-container">
