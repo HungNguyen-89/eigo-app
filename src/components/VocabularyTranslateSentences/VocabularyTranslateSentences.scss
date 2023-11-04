@@ -49,8 +49,8 @@ body {
 
   .vocabularyTranslateFrontSide {
     margin: auto;
-    width: 350px;
-    min-height: 285px;
+    width: 450px;
+    min-height: 345px;
     position: relative;
     backface-visibility: hidden;
     z-index: 10;
@@ -65,8 +65,8 @@ body {
 
         .sentencesVn {
           height: 85px;
-          width: 290px;
-          font-size: 16px;
+          width: 390px;
+          font-size: 18px;
           padding: 15px;
           padding-bottom: 10px;
           padding-right: 5px;
@@ -78,21 +78,25 @@ body {
           height: 55px;
           display: flex;
           flex-direction: column;
-          justify-content: center;
           text-align: center;
 
           .characters-number {
             position: relative;
-            top: 30px;
+            top: 14px;
+            z-index: 100;
           }
 
           img {
             width: 60%;
             margin: auto;
+            position: relative;
+            top:-15px;
           }
 
           .sentencesSuggestTitle {
             font-size: 10px;
+            position: relative;
+            top: -9px;
           }
         }
       }
@@ -111,8 +115,8 @@ body {
 
       textarea {
         width: 100%;
-        font-size: 16px;
-        min-height: 175px;
+        font-size: 18px;
+        min-height: 235px;
         background-color: transparent;
         resize: none;
         font-family: sans-serif;
@@ -132,13 +136,13 @@ body {
 
       .serial-number {
         font-weight: bold;
-        font-size: 12px;
+        font-size: 14px;
       }
 
       .content-title {
-        font-size: 10px;
+        font-size: 12px;
         text-decoration: underline;
-        text-decoration-style: double;
+        //text-decoration-style: double;
       }
     }
 
