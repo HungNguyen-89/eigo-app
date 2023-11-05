@@ -25,7 +25,7 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
 
-  .dictionary-content {
+  .dictionary-title {
     font-size: 20px;
     font-weight: bold;
     padding-bottom: 8px;
@@ -99,6 +99,61 @@ $box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
       .hompage-category-title {
         font-size: 14px;
         text-align: center;
+      }
+    }
+  }
+
+  .dictionary-content {
+    // width: 450px;
+    display: flex;
+    padding-top: 20px;
+    flex-direction: column;
+    font-size: 18px;
+    justify-content: center;
+    // margin-right: auto;
+    // margin-left: auto;
+
+    .words-to-search-for {
+      font-size: 30px;
+      //font-weight: bold;
+    }
+
+    .word-classification {
+      font-style: italic;
+      padding-top: 5px;
+    }
+
+    .word-phonetic {
+      padding-top: 2px;
+    }
+
+    .meaning-of-the-word-container {
+      margin-top: 10px;
+      border-top: #fec400 solid 1px;
+      padding-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      .meaning-of-the-word-en {
+        font-weight: bold;
+      }
+
+      .meaning-of-the-word-vn {
+        font-style: italic;
+        color: #001a66;
+      }
+
+      .example-of-the-word-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        padding-top: 5px;
+
+        .example-of-the-word-container-vn{
+          font-style: italic;
+          color: #001a66;
+        }
       }
     }
   }
