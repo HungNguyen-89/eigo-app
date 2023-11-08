@@ -12,6 +12,7 @@ import { MdOutlineClose } from "react-icons/md";
 import HomPage from "../HomePage";
 import VocabularyPageSingle from "../VocabularyPageSingle/VocabularyPageSingle";
 import VocabularyTranslateSentences from "../VocabularyTranslateSentences/VocabularyTranslateSentences";
+import Dictionary from "../Dictionary";
 
 const PopUp = () => {
   const [popup, setPop] = useState(true);
@@ -41,6 +42,7 @@ const PopUp = () => {
               path="/vocabulary-translate-sentences/data/:id"
               element={<VocabularyTranslateSentences />}
             />
+            <Route path="/dictionary/search/:id" element={<Dictionary />} />
           </Routes>
           <Footer />
         </div>
@@ -49,7 +51,7 @@ const PopUp = () => {
           <div className="popup">
             <div className="popup-header">
               <div className="popup-navbar-logo">
-                <img src="https://i.ibb.co/p2kh5vT/logo-01.png" />
+                <img src="https://i.ibb.co/p2kh5vT/logo-01.png" alt="" />
                 <p>EIGO</p>
               </div>
               <div className="popup-right">

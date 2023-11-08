@@ -1,7 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import "./HomPage.scss";
 
+import { useNavigate } from "react-router-dom";
+
 const HomPage = () => {
+  const [strValue, setStrValue] = useState("");
+  const navigate = useNavigate();
+  const [btnValueCheck, setBtnValueCheck] = useState(false);
+
+  const inputValuecheck = (event) => {
+    // event.preventDefault();
+    setStrValue(event.target.value);
+    var str = document.getElementById("input-value-dict")?.value;
+    if (str.trim().length !== 0) {
+      //console.log("input value is NOT empty");
+      setBtnValueCheck(true);
+    } else {
+      //console.log("input value is empty");
+      setBtnValueCheck(false);
+    }
+  };
+
   return (
     <>
       <div className="hompage-container">
@@ -10,10 +29,22 @@ const HomPage = () => {
           <div className="dictionary-box-icon">
             <img alt="" src="https://i.imgur.com/1r8PmNM.png" />
           </div>
-          <input type="text" placeholder="Type here to search" />
-          <button className="dictionary-box-search-btn">Search</button>
+          <input
+            type="text"
+            id="input-value-dict"
+            value={strValue}
+            onChange={(e) => inputValuecheck(e)}
+            placeholder="Type here to search"
+          />
+          <button
+            className="dictionary-box-search-btn"
+            disabled={!btnValueCheck}
+            onClick={() => navigate(`/dictionary/search/${strValue}`)}
+          >
+            Search
+          </button>
         </div>
-        {/* <div className="hompage-category-container">
+        <div className="hompage-category-container">
           <div className="hompage-category">
             <div className="hompage-category-icon">
               <img alt="" src="https://i.imgur.com/a5yyEF7.png" />
@@ -50,8 +81,8 @@ const HomPage = () => {
               <div className="hompage-category-title-down">Game</div>
             </div>
           </div>
-        </div> */}
-        <div className="dictionary-content">
+        </div>
+        {/* <div className="dictionary-content">
           <div className="words-to-search-for">run</div>
           <div className="word-classification">verb</div>
           <div className="word-phonetic">/ran/</div>
@@ -69,7 +100,7 @@ const HomPage = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

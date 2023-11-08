@@ -228,6 +228,7 @@ const VocabularyTranslateSentences = () => {
       //console.log("input value is empty");
       setBtnValue(false);
     }
+    console.log(btnValue);
   };
 
   const [isChecked, setIsChecked] = useState(false);
