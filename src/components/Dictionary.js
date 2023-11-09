@@ -9,7 +9,7 @@ const Dictionary = () => {
   const [dataDictionary, setDataDictionary] = useState([]);
   const [btnValueCheck, setBtnValueCheck] = useState(false);
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState("");
   const [checkHaveData, setCheckHaveData] = useState(true);
 
   useEffect(() => {
@@ -24,8 +24,10 @@ const Dictionary = () => {
         setCheckHaveData(true);
         //console.log(data.data);
       } catch (error) {
-        // console.log(error.response.status);
+        //console.log(error.response.status);
         setCheckHaveData(false);
+        setLoading(false);
+        //console.log(checkHaveData);
       }
     };
 
@@ -47,75 +49,130 @@ const Dictionary = () => {
     }
   };
 
+  //console.log(loading);
+
   return (
-    <>
-      {loading ? (
+    <div className="hompage-container">
+      <div className="dictionary-title">DICTIONARY</div>
+      <div className="dictionary-box-search">
+        <div className="dictionary-box-icon">
+          <img alt="" src="https://i.imgur.com/1r8PmNM.png" />
+        </div>
+        <input
+          type="text"
+          id="input-value-dict"
+          value={strValue}
+          onChange={(e) => inputValuecheck(e)}
+          placeholder="Type here to search"
+        />
+
+        <button
+          className="dictionary-box-search-btn"
+          disabled={!btnValueCheck}
+          onClick={() => navigate(`/dictionary/search/${strValue}`)}
+        >
+          Search
+        </button>
+      </div>
+
+      {checkHaveData ? (
         <>
-          <div className="hompage-container">
-            <div className="dictionary-title">DICTIONARY</div>
-            <div className="dictionary-box-search">
-              <div className="dictionary-box-icon">
-                <img alt="" src="https://i.imgur.com/1r8PmNM.png" />
-              </div>
-              <input
-                type="text"
-                id="input-value-dict"
-                value={strValue}
-                onChange={(e) => inputValuecheck(e)}
-                placeholder="Type here to search"
-              />
-
-              <button
-                className="dictionary-box-search-btn"
-                disabled={!btnValueCheck}
-                onClick={() => navigate(`/dictionary/search/${strValue}`)}
-              >
-                Search
-              </button>
-            </div>
-
-            {checkHaveData ? (
-              <>
-                {" "}
-                {dataDictionary?.map((content) => (
-                  <div className="dictionary-content">
-                    <div className="words-to-search-for">add</div>
-                    <div className="word-classification">
-                      {content.partOfSpeech}
-                    </div>
-                    <div className="word-phonetic">{content.phonetic}</div>
-                    <div className="meaning-of-the-word-container">
-                      <div className="meaning-of-the-word-en">
-                        {content.definitionOfWord}
-                      </div>
-                      <div className="meaning-of-the-word-vn">
-                        {content.meaning}
-                      </div>
-                      <div className="example-of-the-word-container">
-                        <div className="example-of-the-word-container-en">
-                          He ran down the road.
-                        </div>
-                        <div className="example-of-the-word-container-vn">
-                          Anh ấy chạy xuống đường.
-                        </div>
-                      </div>
-                    </div>
+          {dataDictionary?.map((content) => (
+            <div className="dictionary-content">
+              <div className="words-to-search-for">add</div>
+              <div className="word-classification">{content.partOfSpeech}</div>
+              <div className="word-phonetic">{content.phonetic}</div>
+              <div className="meaning-of-the-word-container">
+                <div className="meaning-of-the-word-en">
+                  {content.definitionOfWord}
+                </div>
+                <div className="meaning-of-the-word-vn">{content.meaning}</div>
+                <div className="example-of-the-word-container">
+                  <div className="example-of-the-word-container-en">
+                    He ran down the road.
                   </div>
-                ))}
-              </>
-            ) : (
-              <div className="dictionary-content-not-found">
-                No match found for “{id}”
+                  <div className="example-of-the-word-container-vn">
+                    Anh ấy chạy xuống đường.
+                  </div>
+                </div>
               </div>
-            )}
-          </div>
+            </div>
+          ))}
         </>
       ) : (
-        <div className="loading-container">
-          <Loading />
+        <div className="dictionary-content-not-found">
+          No match found for “{id}”
         </div>
       )}
-    </>
+    </div>
+
+    // <>
+    //   {loading ? (
+    //     <>
+    //       <div className="hompage-container">
+    //         <div className="dictionary-title">DICTIONARY</div>
+    //         <div className="dictionary-box-search">
+    //           <div className="dictionary-box-icon">
+    //             <img alt="" src="https://i.imgur.com/1r8PmNM.png" />
+    //           </div>
+    //           <input
+    //             type="text"
+    //             id="input-value-dict"
+    //             value={strValue}
+    //             onChange={(e) => inputValuecheck(e)}
+    //             placeholder="Type here to search"
+    //           />
+
+    //           <button
+    //             className="dictionary-box-search-btn"
+    //             disabled={!btnValueCheck}
+    //             onClick={() => navigate(`/dictionary/search/${strValue}`)}
+    //           >
+    //             Search
+    //           </button>
+    //         </div>
+
+    //         {checkHaveData ? (
+    //           <>
+    //             {dataDictionary?.map((content) => (
+    //               <div className="dictionary-content">
+    //                 <div className="words-to-search-for">add</div>
+    //                 <div className="word-classification">
+    //                   {content.partOfSpeech}
+    //                 </div>
+    //                 <div className="word-phonetic">{content.phonetic}</div>
+    //                 <div className="meaning-of-the-word-container">
+    //                   <div className="meaning-of-the-word-en">
+    //                     {content.definitionOfWord}
+    //                   </div>
+    //                   <div className="meaning-of-the-word-vn">
+    //                     {content.meaning}
+    //                   </div>
+    //                   <div className="example-of-the-word-container">
+    //                     <div className="example-of-the-word-container-en">
+    //                       He ran down the road.
+    //                     </div>
+    //                     <div className="example-of-the-word-container-vn">
+    //                       Anh ấy chạy xuống đường.
+    //                     </div>
+    //                   </div>
+    //                 </div>
+    //               </div>
+    //             ))}
+    //           </>
+    //         ) : (
+    //           <div className="dictionary-content-not-found">
+    //             No match found for “{id}”
+    //           </div>
+    //         )}
+    //       </div>
+    //     </>
+    //   ) : (
+    //     <div className="loading-container">
+    //       <Loading />
+    //     </div>
+    //   )}
+    // </>
   );
 };
 
