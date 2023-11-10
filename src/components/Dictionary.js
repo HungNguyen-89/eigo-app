@@ -22,9 +22,9 @@ const Dictionary = () => {
         setDataDictionary(data.data);
         setLoading(true);
         setCheckHaveData(true);
-        //console.log(data.data);
+        console.log(data.data);
       } catch (error) {
-        //console.log(error.response.status);
+        console.log(error.response.status);
         setCheckHaveData(false);
         setLoading(false);
         //console.log(checkHaveData);
@@ -79,20 +79,22 @@ const Dictionary = () => {
         <>
           {dataDictionary?.map((content) => (
             <div className="dictionary-content">
-              <div className="words-to-search-for">add</div>
+              <div className="words-to-search-for">{content.word}</div>
               <div className="word-classification">{content.partOfSpeech}</div>
               <div className="word-phonetic">{content.phonetic}</div>
               <div className="meaning-of-the-word-container">
                 <div className="meaning-of-the-word-en">
                   {content.definitionOfWord}
                 </div>
-                <div className="meaning-of-the-word-vn">{content.meaning}</div>
+                <div className="meaning-of-the-word-vn">
+                  {content.meaningOfWord}
+                </div>
                 <div className="example-of-the-word-container">
                   <div className="example-of-the-word-container-en">
-                    He ran down the road.
+                    {content.exampleEn}
                   </div>
                   <div className="example-of-the-word-container-vn">
-                    Anh ấy chạy xuống đường.
+                    {content.exampleVn}
                   </div>
                 </div>
               </div>
