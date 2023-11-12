@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const HomPage = () => {
   const [strValue, setStrValue] = useState("");
   const navigate = useNavigate();
-  const [btnValueCheck, setBtnValueCheck] = useState(false);
+  const [btnValueCheck, setBtnValueCheck] = useState(true);
 
   // useEffect(() => {
   //   const asyncFn = async () => {
@@ -31,15 +31,20 @@ const HomPage = () => {
 
   const inputValuecheck = (event) => {
     // event.preventDefault();
-    setStrValue(event.target.value);
+    setStrValue(event.target.value.toLowerCase());
     var str = document.getElementById("input-value-dict")?.value;
     if (str.trim().length !== 0) {
       //console.log("input value is NOT empty");
-      setBtnValueCheck(true);
+      setBtnValueCheck(false);
     } else {
       //console.log("input value is empty");
-      setBtnValueCheck(false);
+      setBtnValueCheck(true);
     }
+  };
+
+  const earseTextInput = () => {
+    setStrValue("");
+    setBtnValueCheck(true);
   };
 
   return (
@@ -50,16 +55,27 @@ const HomPage = () => {
           <div className="dictionary-box-icon">
             <img alt="" src="https://i.imgur.com/1r8PmNM.png" />
           </div>
-          <input
-            type="text"
-            id="input-value-dict"
-            value={strValue}
-            onChange={(e) => inputValuecheck(e)}
-            placeholder="Type here to search"
-          />
+          <div className="input-container">
+            <input
+              type="text"
+              id="input-value-dict"
+              value={strValue}
+              onChange={(e) => inputValuecheck(e)}
+              placeholder="Type here to search"
+            />
+            {!btnValueCheck ? (
+              <img
+                src="https://i.imgur.com/QzkjPIk.png"
+                onClick={() => earseTextInput()}
+                alt=""
+              />
+            ) : (
+              ""
+            )}
+          </div>
           <button
             className="dictionary-box-search-btn"
-            disabled={!btnValueCheck}
+            disabled={btnValueCheck}
             onClick={() => navigate(`/dictionary/search/${strValue}`)}
           >
             Search
