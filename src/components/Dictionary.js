@@ -38,7 +38,7 @@ const Dictionary = () => {
 
   const inputValuecheck = (event) => {
     // event.preventDefault();
-    setStrValue(event.target.value);
+    setStrValue(event.target.value.toLowerCase());
     var str = document.getElementById("input-value-dict")?.value;
     if (str.trim().length !== 0) {
       //console.log("input value is NOT empty");
@@ -71,7 +71,7 @@ const Dictionary = () => {
           />
           {!btnValueCheck ? (
             <img
-              src="https://i.imgur.com/QzkjPIk.png"
+              src="https://i.imgur.com/p0VdGTx.png"
               onClick={() => earseTextInput()}
               alt=""
             />

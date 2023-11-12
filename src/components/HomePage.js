@@ -65,7 +65,7 @@ const HomPage = () => {
             />
             {!btnValueCheck ? (
               <img
-                src="https://i.imgur.com/QzkjPIk.png"
+                src="https://i.imgur.com/p0VdGTx.png"
                 onClick={() => earseTextInput()}
                 alt=""
               />
