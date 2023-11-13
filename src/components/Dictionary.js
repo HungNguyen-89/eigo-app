@@ -91,29 +91,39 @@ const Dictionary = () => {
 
       {checkHaveData ? (
         <>
-          {dataDictionary?.map((content) => (
-            <div className="dictionary-content">
-              <div className="words-to-search-for">{content.word}</div>
-              <div className="word-classification">{content.partOfSpeech}</div>
-              <div className="word-phonetic">{content.phonetic}</div>
-              <div className="meaning-of-the-word-container">
-                <div className="meaning-of-the-word-en">
-                  {content.definitionOfWord}
-                </div>
-                <div className="meaning-of-the-word-vn">
-                  {content.meaningOfWord}
-                </div>
-                <div className="example-of-the-word-container">
-                  <div className="example-of-the-word-container-en">
-                    {content.exampleEn}
+          {loading ? (
+            <>
+              {dataDictionary?.map((content) => (
+                <div className="dictionary-content">
+                  <div className="words-to-search-for">{content.word}</div>
+                  <div className="word-classification">
+                    {content.partOfSpeech}
                   </div>
-                  <div className="example-of-the-word-container-vn">
-                    {content.exampleVn}
+                  <div className="word-phonetic">{content.phonetic}</div>
+                  <div className="meaning-of-the-word-container">
+                    <div className="meaning-of-the-word-en">
+                      {content.definitionOfWord}
+                    </div>
+                    <div className="meaning-of-the-word-vn">
+                      {content.meaningOfWord}
+                    </div>
+                    <div className="example-of-the-word-container">
+                      <div className="example-of-the-word-container-en">
+                        {content.exampleEn}
+                      </div>
+                      <div className="example-of-the-word-container-vn">
+                        {content.exampleVn}
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              ))}
+            </>
+          ) : (
+            <div className="loading-container">
+              <Loading />
             </div>
-          ))}
+          )}
         </>
       ) : (
         <div className="dictionary-content-not-found">
@@ -121,74 +131,6 @@ const Dictionary = () => {
         </div>
       )}
     </div>
-
-    // <>
-    //   {loading ? (
-    //     <>
-    //       <div className="hompage-container">
-    //         <div className="dictionary-title">DICTIONARY</div>
-    //         <div className="dictionary-box-search">
-    //           <div className="dictionary-box-icon">
-    //             <img alt="" src="https://i.imgur.com/1r8PmNM.png" />
-    //           </div>
-    //           <input
-    //             type="text"
-    //             id="input-value-dict"
-    //             value={strValue}
-    //             onChange={(e) => inputValuecheck(e)}
-    //             placeholder="Type here to search"
-    //           />
-
-    //           <button
-    //             className="dictionary-box-search-btn"
-    //             disabled={!btnValueCheck}
-    //             onClick={() => navigate(`/dictionary/search/${strValue}`)}
-    //           >
-    //             Search
-    //           </button>
-    //         </div>
-
-    //         {checkHaveData ? (
-    //           <>
-    //             {dataDictionary?.map((content) => (
-    //               <div className="dictionary-content">
-    //                 <div className="words-to-search-for">add</div>
-    //                 <div className="word-classification">
-    //                   {content.partOfSpeech}
-    //                 </div>
-    //                 <div className="word-phonetic">{content.phonetic}</div>
-    //                 <div className="meaning-of-the-word-container">
-    //                   <div className="meaning-of-the-word-en">
-    //                     {content.definitionOfWord}
-    //                   </div>
-    //                   <div className="meaning-of-the-word-vn">
-    //                     {content.meaning}
-    //                   </div>
-    //                   <div className="example-of-the-word-container">
-    //                     <div className="example-of-the-word-container-en">
-    //                       He ran down the road.
-    //                     </div>
-    //                     <div className="example-of-the-word-container-vn">
-    //                       Anh ấy chạy xuống đường.
-    //                     </div>
-    //                   </div>
-    //                 </div>
-    //               </div>
-    //             ))}
-    //           </>
-    //         ) : (
-    //           <div className="dictionary-content-not-found">
-    //             No match found for “{id}”
-    //           </div>
-    //         )}
-    //       </div>
-    //     </>
-    //   ) : (
-    //     <div className="loading-container">
-    //       <Loading />
-    //     </div>
-    //   )}
-    // </>
   );
 };
 

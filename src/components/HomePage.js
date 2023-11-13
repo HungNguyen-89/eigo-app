@@ -1,33 +1,11 @@
 import React, { useState } from "react";
 import "./HomPage.scss";
-
 import { useNavigate } from "react-router-dom";
-//import axios from "axios";
 
 const HomPage = () => {
   const [strValue, setStrValue] = useState("");
   const navigate = useNavigate();
   const [btnValueCheck, setBtnValueCheck] = useState(true);
-
-  // useEffect(() => {
-  //   const asyncFn = async () => {
-  //     try {
-  //       let res = await axios.get(
-  //         `https://db-eigo-app.onrender.com/dictionary/add`
-  //       );
-  //       let data = res && res.data ? res.data : [];
-  //       // setDataDictionary(data.data);
-  //       // setLoading(true);
-  //       // setCheckHaveData(true);
-  //       console.log(data.data);
-  //     } catch (error) {
-  //       console.log(error.response.status);
-  //       // setCheckHaveData(false);
-  //     }
-  //   };
-
-  //   asyncFn();
-  // }, []);
 
   const inputValuecheck = (event) => {
     // event.preventDefault();
