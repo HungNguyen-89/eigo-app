@@ -13,6 +13,7 @@ import HomPage from "../HomePage";
 import VocabularyPageSingle from "../VocabularyPageSingle/VocabularyPageSingle";
 import VocabularyTranslateSentences from "../VocabularyTranslateSentences/VocabularyTranslateSentences";
 import Dictionary from "../Dictionary";
+import Grammar from "../Grammar/Grammar";
 
 const PopUp = () => {
   const [popup, setPop] = useState(true);
@@ -34,6 +35,7 @@ const PopUp = () => {
             <Route path="/de-thi/:id" element={<ExamPageAll />} />
             <Route path="/flashcards/:id" element={<ExamPageSingle />} />
             <Route path="/flashcards/data/:id" element={<FlashCard />} />
+            <Route path="/ngu-phap" element={<Grammar />} />
             <Route
               path="/vocabulary-translate-sentences/:id"
               element={<VocabularyPageSingle />}

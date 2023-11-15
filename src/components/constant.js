@@ -5,6 +5,25 @@ export const routes = [
     subMenu: false,
   },
   {
+    name: "Grammar",
+    link: "/ngu-phap",
+    subMenu: false,
+    // subRoutes: [
+    //   {
+    //     name: "Verb",
+    //     link: "/vocabulary-translate-sentences/verb",
+    //   },
+    //   {
+    //     name: "Adverb",
+    //     link: "/vocabulary-translate-sentences/adv",
+    //   },
+    //   {
+    //     name: "Phrasal verb",
+    //     link: "/vocabulary-translate-sentences/phrasal",
+    //   },
+    // ],
+  },
+  {
     name: "Vocabulary (Translate sentences)",
     link: "/",
     subMenu: true,
