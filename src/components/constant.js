@@ -4,11 +4,11 @@ export const routes = [
     link: "/",
     subMenu: false,
   },
-  {
-    name: "Grammar",
-    link: "/ngu-phap",
-    subMenu: false,
-  },
+  // {
+  //   name: "Grammar",
+  //   link: "/ngu-phap",
+  //   subMenu: false,
+  // },
   {
     name: "Vocabulary (Translate sentences)",
     link: "/",
@@ -28,24 +28,24 @@ export const routes = [
       },
     ],
   },
-  {
-    name: "Flashcard",
-    link: "/flashcards",
-    subMenu: true,
-    subRoutes: [
-      {
-        name: "Verb",
-        link: "/flashcards/verb",
-      },
+  // {
+  //   name: "Flashcard",
+  //   link: "/flashcards",
+  //   subMenu: true,
+  //   subRoutes: [
+  //     {
+  //       name: "Verb",
+  //       link: "/flashcards/verb",
+  //     },
 
-      {
-        name: "Adverb",
-        link: "/flashcards/adv",
-      },
-      {
-        name: "Phrasal verb",
-        link: "/flashcards/phrasal",
-      },
-    ],
-  },
+  //     {
+  //       name: "Adverb",
+  //       link: "/flashcards/adv",
+  //     },
+  //     {
+  //       name: "Phrasal verb",
+  //       link: "/flashcards/phrasal",
+  //     },
+  //   ],
+  // },
 ];
