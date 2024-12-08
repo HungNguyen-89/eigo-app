@@ -90,6 +90,8 @@ const VocabularyTranslateSentences = () => {
   const [checkResultText, setCheckResultText] = useState("");
   const [checkRepeat, setCheckRepeat] = useState(false);
   const [audio, setAudio] = useState("");
+  const [pageNumber, setPageNumer] = useState("");
+  const [pageNumberTotal, setPageNumerTotal] = useState("");
 
   useEffect(() => {
     if (randomData.length > 0) {
@@ -102,6 +104,8 @@ const VocabularyTranslateSentences = () => {
       setExample_1_vn(randomData[0].example_1_vn);
       setNumberOfWhiteSpace(getNumberWhiteSpace(randomData[0].example_1));
       setAudio(randomData[0].audio);
+      setPageNumer(randomData.length);
+      setPageNumerTotal(randomData.length);
     }
   }, [loading]);
 
@@ -128,6 +132,7 @@ const VocabularyTranslateSentences = () => {
       setCheckResult("");
       setCheckResultText("");
       setCorrect(false);
+      setPageNumer(randomData.length);
     } else {
       setActiveNextBtn(true);
       setActiveBtn(false);
@@ -163,6 +168,7 @@ const VocabularyTranslateSentences = () => {
     setCorrect(false);
     setIsChecked(false);
     setCheckRepeat(false);
+    setPageNumer(randomData.length);
   };
 
   const sentencesCheck = () => {
@@ -262,29 +268,6 @@ const VocabularyTranslateSentences = () => {
           ) : (
             <div className="vocabularyTranslateFrontSide">
               <div className="sentencesUp">
-                <div className="sentencesVn-suggest">
-                  <div className="sentencesVn">{example_1_vn}</div>
-                  <div className="sentencesSuggest">
-                    <span className="characters-number">8</span>
-                    <img alt="" src="https://i.imgur.com/YIYZZiN.png" />
-                    <div className="sentencesSuggestTitle">characters</div>
-                    {/* {input ? (
-                    <div
-                      className="sentencesResult"
-                      dangerouslySetInnerHTML={{ __html: aMarked }}
-                    />
-                  ) : (
-                    (() => {
-                      const arr = [];
-                      for (let i = 0; i < numberOfWhiteSpace + 1; i++) {
-                        arr.push(<div className="suggestItem">{i + 1}</div>);
-                      }
-                      return arr;
-                    })()
-                  )} */}
-                  </div>
-                </div>
-
                 <div className="sentencesEn-container">
                   {input ? (
                     <div
@@ -292,52 +275,35 @@ const VocabularyTranslateSentences = () => {
                       dangerouslySetInnerHTML={{ __html: bMarked }}
                     />
                   ) : (
-                    <textarea
-                      id="input-value"
-                      value={strValue}
-                      placeholder="Type here to input"
-                      onChange={(e) => inputValuecheck(e)}
-                    ></textarea>
+                    <div className="sentencesVn-suggest">
+                      <div className="sentencesVn">{example_1_vn}</div>
+                      <textarea
+                        id="input-value"
+                        value={strValue}
+                        placeholder="Type here to input"
+                        onChange={(e) => inputValuecheck(e)}
+                      ></textarea>
+                      {/* <div className="sentencesSuggest">
+                    <span className="characters-number">8</span>
+                    <img alt="" src="https://i.imgur.com/YIYZZiN.png" />
+                    <div className="sentencesSuggestTitle">characters</div>
+                  
+                  </div> */}
+                    </div>
                   )}
                 </div>
-
-                {/* {input ? (
-                  <div className="checkResultContainer">
-                    <div
-                      className={
-                        correct
-                          ? "checkResult correct"
-                          : "checkResult uncorrect"
-                      }
-                    >
-                      {checkResult}
-                    </div>
-                    <div
-                      className={
-                        correct
-                          ? "checkResultText textCorrect"
-                          : "checkResultText textWrong"
-                      }
-                    >
-                      {checkResultText}
-                    </div>
-                  </div>
-                ) : (
-                  ""
-                )} */}
               </div>
-
               <div className="sentencesDown">
                 {input ? (
                   <div className="explainWordContainer">
                     <div className="explain_word_and_sound">
                       <div className="explain_word">{word}</div>
-                      <div
+                      {/* <div
                         className="sound_of_explain_word"
                         onClick={() => Sound()}
                       >
                         <AiFillSound />
-                      </div>
+                      </div> */}
                     </div>
 
                     <div className="part_of_speech">{partOfSpeech}</div>
@@ -361,10 +327,13 @@ const VocabularyTranslateSentences = () => {
                   ""
                 )}
               </div>
-
-              <div className="serial-number-and-content-title">
-                <div className="serial-number">5/35</div>
-                <div className="content-title">VERB PART 1</div>
+              <div className="serial-number-and-content-title-container">
+                <div className="serial-number-and-content-title">
+                  <div className="serial-number">
+                    {pageNumberTotal - pageNumber + 1}/{pageNumberTotal}
+                  </div>
+                  <div className="content-title">VERB PART 1</div>
+                </div>
               </div>
             </div>
           )}
