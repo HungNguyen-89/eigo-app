@@ -43,7 +43,7 @@
       padding: 8px 10px;
 
       .exam-page-single-item-name {
-        font-size: 20px;
+        font-size: 16px;
       }
 
       .examp-page-single-item-btn {
@@ -56,18 +56,22 @@
           //  border: solid #00c660 3px;
 
           color: white;
-          padding: 6px 20px;
-          font-size: 18px;
-          font-weight: 500;
-          border-radius: 8px;
+          padding: 5px 15px;
+          font-size: 16px;
+          // font-weight: 500;
+          border-radius: 5px;
           font-family: "Noto Sans JP", sans-serif;
-          gap: 10px;
+          gap: 5px;
           cursor: pointer;
 
           .heading-links-item-icon {
             display: flex;
             align-items: center;
-            font-size: 26px;
+            font-size: 20px;
+          }
+
+          .button-name {
+            font-size: 14px;
           }
 
           &:hover {

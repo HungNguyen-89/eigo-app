@@ -60,7 +60,7 @@ const VocabularyPageSingle = () => {
                         <span className="heading-links-item-icon">
                           <GiNotebook />
                         </span>
-                        Start
+                        <span className="button-name">Start</span>
                       </Link>
                     </button>
                   </div>
