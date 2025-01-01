@@ -40,8 +40,10 @@ const getNumberWhiteSpace = (str) => {
 
 const VocabularyTranslateSentences = () => {
   const [dataTest, setDataTest] = useState([]);
+  const [dataTest2, setDataTest2] = useState([]);
   const [loading, setLoading] = useState(false);
   const [randomData, setRandomData] = useState("");
+  const [randomData1, setRandomData1] = useState("");
   const [currentCase, setCurrentCase] = useState("");
   const { id } = useParams();
 
@@ -66,6 +68,7 @@ const VocabularyTranslateSentences = () => {
       );
       let data = res && res.data ? res.data : [];
       setDataTest(data);
+      setDataTest2(data.flashCardData);
       setRandomData(getRandomIndexOfArray(data.flashCardData));
       setLoading(true);
     };
@@ -92,6 +95,7 @@ const VocabularyTranslateSentences = () => {
   const [audio, setAudio] = useState("");
   const [pageNumber, setPageNumer] = useState("");
   const [pageNumberTotal, setPageNumerTotal] = useState("");
+  // const [randomData1, setRandomData1] = useState(randomData);
 
   useEffect(() => {
     if (randomData.length > 0) {
@@ -111,11 +115,13 @@ const VocabularyTranslateSentences = () => {
 
   const [activeBtn, setActiveBtn] = useState(true);
   const [activeNextBtn, setActiveNextBtn] = useState(false);
+  const [btnValueCont, setBtnValueCont] = useState(false);
 
   const Continue = () => {
     setStrValue("");
     setBtnValue(false);
     setIsChecked(false);
+    //console.log(dataTest);
 
     if (randomData && randomData.length > 1) {
       randomData.splice(0, 1);
@@ -133,43 +139,81 @@ const VocabularyTranslateSentences = () => {
       setCheckResultText("");
       setCorrect(false);
       setPageNumer(randomData.length);
-    } else {
-      setActiveNextBtn(true);
-      setActiveBtn(false);
-      setWord("");
-      setPartOfSpeech("");
-      setPhonetic("");
-      setMeaning("");
-      setExample_1("");
-      setDefinitionOfWord("");
-      setExample_1_vn("Do you want to again?");
-      setNumberOfWhiteSpace("");
-      setRandomData(getRandomIndexOfArray(dataTest.flashCardData));
-      setCheckRepeat(true);
+      if (randomData.length === 1) {
+        setBtnValueCont(true);
+      }
+      // setRandomData1(getRandomIndexOfArray(dataTest.flashCardData));
+    } else if (randomData && randomData.length === 1) {
+      randomData.splice(0, 1);
+      setWord(randomData[0].word);
+      setPartOfSpeech(randomData[0].partOfSpeech);
+      setPhonetic(randomData[0].phonetic);
+      setMeaning(randomData[0].meaning);
+      setExample_1(randomData[0].example_1);
+      setDefinitionOfWord(randomData[0].definitionOfWord);
+      setExample_1_vn(randomData[0].example_1_vn);
+      setNumberOfWhiteSpace(getNumberWhiteSpace(randomData[0].example_1));
+      setAudio(randomData[0].audio);
+      setInput(false);
+      setCheckResult("");
+      setCheckResultText("");
+      setCorrect(false);
+      setPageNumer(randomData.length);
+      // setActiveNextBtn(true);
+      // setActiveBtn(false);
+      // setWord("");
+      // setPartOfSpeech("");
+      // setPhonetic("");
+      // setMeaning("");
+      // setExample_1("");
+      // setDefinitionOfWord("");
+      // setExample_1_vn("Do you want to again?");
+      // setNumberOfWhiteSpace("");
+      // setRandomData(getRandomIndexOfArray(dataTest.flashCardData));
+      // setCheckRepeat(true);
+      setBtnValueCont(true);
     }
+    // else if{
+    //   setActiveNextBtn(true);
+    //   setActiveBtn(false);
+    //   setWord("");
+    //   setPartOfSpeech("");
+    //   setPhonetic("");
+    //   setMeaning("");
+    //   setExample_1("");
+    //   setDefinitionOfWord("");
+    //   setExample_1_vn("Do you want to again?");
+    //   setNumberOfWhiteSpace("");
+    //   setRandomData(getRandomIndexOfArray(dataTest.flashCardData));
+    //   setCheckRepeat(true);
+    //   setBtnValueCont(true);
+    // }
+    console.log(randomData.length);
     console.log(randomData);
   };
 
-  const Repeat = () => {
-    setWord(randomData[0].word);
-    setPartOfSpeech(randomData[0].partOfSpeech);
-    setPhonetic(randomData[0].phonetic);
-    setMeaning(randomData[0].meaning);
-    setExample_1(randomData[0].example_1);
-    setDefinitionOfWord(randomData[0].definitionOfWord);
-    setExample_1_vn(randomData[0].example_1_vn);
-    setNumberOfWhiteSpace(getNumberWhiteSpace(randomData[0].example_1));
-    setAudio(randomData[0].audio);
-    setActiveNextBtn(false);
-    setActiveBtn(true);
-    setInput(false);
-    setCheckResult("");
-    setCheckResultText("");
-    setCorrect(false);
-    setIsChecked(false);
-    setCheckRepeat(false);
-    setPageNumer(randomData.length);
-  };
+  // const Repeat = () => {
+  //   setRandomData(getRandomIndexOfArray(dataTest.flashCardData));
+  //   setWord(randomData[0].word);
+  //   setPartOfSpeech(randomData[0].partOfSpeech);
+  //   setPhonetic(randomData[0].phonetic);
+  //   setMeaning(randomData[0].meaning);
+  //   setExample_1(randomData[0].example_1);
+  //   setDefinitionOfWord(randomData[0].definitionOfWord);
+  //   setExample_1_vn(randomData[0].example_1_vn);
+  //   setNumberOfWhiteSpace(getNumberWhiteSpace(randomData[0].example_1));
+  //   setAudio(randomData[0].audio);
+  //   setActiveNextBtn(false);
+  //   setActiveBtn(true);
+  //   setInput(false);
+  //   setCheckResult("");
+  //   setCheckResultText("");
+  //   setCorrect(false);
+  //   setIsChecked(false);
+  //   setCheckRepeat(false);
+  //   setPageNumer(randomData.length);
+  //   console.log(randomData);
+  // };
 
   const sentencesCheck = () => {
     setBtnValue(false);
@@ -262,8 +306,8 @@ const VocabularyTranslateSentences = () => {
         <div className="vocabularyTranslateContainer">
           {checkRepeat ? (
             <div className="vocabularyTranslateFrontSideRepeat">
-              <p>Do you want to again?</p>
-              <img src="https://i.ibb.co/NgvnR7F/play-again.png" alt="" />
+              {/* <p>Finish!</p>
+              <img src="https://i.ibb.co/NgvnR7F/play-again.png" alt="" /> */}
             </div>
           ) : (
             <div className="vocabularyTranslateFrontSide">
@@ -332,7 +376,7 @@ const VocabularyTranslateSentences = () => {
                   <div className="serial-number">
                     {pageNumberTotal - pageNumber + 1}/{pageNumberTotal}
                   </div>
-                  <div className="content-title">VERB PART 1</div>
+                  <div className="content-title">{dataTest.id}</div>
                 </div>
               </div>
             </div>
@@ -388,12 +432,12 @@ const VocabularyTranslateSentences = () => {
               <span className="buttonPlay-title">List</span>
             </div>
 
-            <div className={`buttonPlay ${activeNextBtn ? "hiddenBtn" : ""}`}>
-              <button className="buttonPlay-icon">
+            {/* <div className="buttonPlay">
+              <button className="buttonPlay-icon" onClick={() => Repeat()}>
                 <img alt="" src="https://i.imgur.com/oWc5Idu.png" />
               </button>
               <span className="buttonPlay-title">Repeat</span>
-            </div>
+            </div> */}
 
             <div className={`buttonPlay ${activeNextBtn ? "hiddenBtn" : ""}`}>
               <button
@@ -408,7 +452,11 @@ const VocabularyTranslateSentences = () => {
             </div>
 
             <div className={`buttonPlay ${activeNextBtn ? "hiddenBtn" : ""}`}>
-              <button className="buttonPlay-icon" onClick={() => Continue()}>
+              <button
+                className="buttonPlay-icon"
+                onClick={() => Continue()}
+                disabled={btnValueCont}
+              >
                 <img
                   id="arrow-right-btn"
                   alt=""
@@ -418,7 +466,7 @@ const VocabularyTranslateSentences = () => {
               <span className="buttonPlay-title">Next</span>
             </div>
 
-            <button
+            {/* <button
               className={`buttonPlay ${activeBtn ? "hiddenBtn" : ""}`}
               onClick={() => Repeat()}
             >
@@ -426,7 +474,7 @@ const VocabularyTranslateSentences = () => {
                 <BsArrowRepeat />
               </span>
               Again
-            </button>
+            </button> */}
           </div>
 
           {/* {checkRepeat ? (
