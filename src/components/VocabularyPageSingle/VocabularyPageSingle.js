@@ -12,19 +12,19 @@ const VocabularyPageSingle = () => {
   const [dataTest, setDataTest] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    if (id.includes("verb")) {
-      setCurrentCase("verb");
-    } else if (id.includes("adv")) {
-      setCurrentCase("adv");
-    } else if (id.includes("phrasal")) {
-      setCurrentCase("phrasal");
-    } else if (id.includes("n4")) {
-      setCurrentCase(4);
-    } else if (id.includes("n5")) {
-      setCurrentCase(5);
-    }
-  }, [id]);
+  // useEffect(() => {
+  //   if (id.includes("verb")) {
+  //     setCurrentCase("verb");
+  //   } else if (id.includes("adv")) {
+  //     setCurrentCase("adv");
+  //   } else if (id.includes("phrasal")) {
+  //     setCurrentCase("phrasal");
+  //   } else if (id.includes("n4")) {
+  //     setCurrentCase(4);
+  //   } else if (id.includes("n5")) {
+  //     setCurrentCase(5);
+  //   }
+  // }, [id]);
 
   useEffect(() => {
     const asyncFn = async () => {

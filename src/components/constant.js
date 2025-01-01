@@ -26,6 +26,11 @@ export const routes = [
         name: "Phrasal verb",
         link: "/vocabulary-translate-sentences/phrasal",
       },
+      ,
+      {
+        name: "Business",
+        link: "/vocabulary-translate-sentences/business",
+      },
     ],
   },
   // {
