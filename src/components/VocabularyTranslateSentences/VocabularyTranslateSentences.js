@@ -379,7 +379,7 @@ const VocabularyTranslateSentences = () => {
                   <div className="serial-number">
                     {pageNumberTotal - pageNumber + 1}/{pageNumberTotal}
                   </div>
-                  <div className="content-title">{dataTest.id}</div>
+                  <div className="content-title">{dataTest.name_flashcard}</div>
                 </div>
               </div>
             </div>
