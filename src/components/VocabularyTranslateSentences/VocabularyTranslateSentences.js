@@ -366,6 +366,9 @@ const VocabularyTranslateSentences = () => {
                       />
                       {meaning}
                     </div>
+                    <div className="example_title">Example</div>
+                    <div className="example_en">{example_1}</div>
+                    <div className="example_vn">{example_1_vn}</div>
                   </div>
                 ) : (
                   ""
