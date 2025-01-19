@@ -31,6 +31,10 @@ export const routes = [
         name: "Business",
         link: "/vocabulary-translate-sentences/business",
       },
+      {
+        name: "Grammar",
+        link: "/vocabulary-translate-sentences/grammar",
+      },
     ],
   },
   // {

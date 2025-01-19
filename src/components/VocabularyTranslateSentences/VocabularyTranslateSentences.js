@@ -56,8 +56,8 @@ const VocabularyTranslateSentences = () => {
       setCurrentCase("phrasal");
     } else if (id.includes("business")) {
       setCurrentCase("business");
-    } else if (id.includes("n5")) {
-      setCurrentCase(5);
+    } else if (id.includes("grammar")) {
+      setCurrentCase("grammar");
     }
   }, [id]);
 
@@ -219,7 +219,14 @@ const VocabularyTranslateSentences = () => {
     setBtnValue(false);
     setInput(true);
     var str = document.getElementById("input-value").value;
-    if (example_1 === str) {
+    const firstLetter = str.charAt(0);
+
+    const firstLetterCap = firstLetter.toUpperCase();
+
+    const remainingLetters = str.slice(1);
+
+    const capitalizedWord = firstLetterCap + remainingLetters;
+    if (example_1 === capitalizedWord) {
       setCheckResult("✓");
       setCheckResultText("CORRECT");
       setCorrect(true);
@@ -252,7 +259,7 @@ const VocabularyTranslateSentences = () => {
     }
 
     let a = words(example_1);
-    let b = words(str);
+    let b = words(capitalizedWord);
 
     // Mark the words in a which are different in b.
     setAMarked(markWords(a, b).join(" "));
@@ -271,34 +278,46 @@ const VocabularyTranslateSentences = () => {
     //console.log(event.target.value);
 
     var str = document.getElementById("input-value")?.value;
-    if (str.trim().length !== 0) {
+    //const word = "freecodecamp";
+
+    const firstLetter = str.charAt(0);
+
+    const firstLetterCap = firstLetter.toUpperCase();
+
+    const remainingLetters = str.slice(1);
+
+    const capitalizedWord = firstLetterCap + remainingLetters;
+
+    console.log(capitalizedWord);
+
+    if (capitalizedWord.trim().length !== 0) {
       //console.log("input value is NOT empty");
       setBtnValue(true);
     } else {
       //console.log("input value is empty");
       setBtnValue(false);
     }
-    console.log(btnValue);
+    // console.log(btnValue);
   };
 
   const [isChecked, setIsChecked] = useState(false);
-  const clickHandler = () => {
-    setIsChecked(!isChecked);
+  // const clickHandler = () => {
+  //   setIsChecked(!isChecked);
 
-    if (!isChecked) {
-      randomData.push(randomData[0]);
-    } else {
-      randomData.pop();
-    }
-    // console.log(randomData);
-  };
+  //   if (!isChecked) {
+  //     randomData.push(randomData[0]);
+  //   } else {
+  //     randomData.pop();
+  //   }
+  //   // console.log(randomData);
+  // };
 
-  const Sound = () => {
-    console.log("1");
-    new Audio(audio).play();
-  };
+  // const Sound = () => {
+  //   console.log("1");
+  //   new Audio(audio).play();
+  // };
 
-  console.log(currentCase);
+  // console.log(currentCase);
 
   return (
     <>
