@@ -10,7 +10,7 @@ export const routes = [
   //   subMenu: false,
   // },
   {
-    name: "Vocabulary (Translate sentences)",
+    name: "Vocabulary",
     link: "/",
     subMenu: true,
     subRoutes: [
