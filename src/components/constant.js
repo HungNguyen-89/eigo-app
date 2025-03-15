@@ -31,11 +31,16 @@ export const routes = [
         name: "Business",
         link: "/vocabulary-translate-sentences/business",
       },
-      {
-        name: "Grammar",
-        link: "/vocabulary-translate-sentences/grammar",
-      },
+      // {
+      //   name: "Grammar",
+      //   link: "/vocabulary-translate-sentences/grammar",
+      // },
     ],
+  },
+  {
+    name: "Grammar",
+    link: "/grammar",
+    subMenu: false,
   },
   // {
   //   name: "Flashcard",

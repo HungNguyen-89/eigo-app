@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./VocabularyTranslateSentences.scss";
+import "./GrammarTranslateSentences.scss";
 
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
@@ -38,7 +38,7 @@ const getNumberWhiteSpace = (str) => {
   return numberWhiteSpace;
 };
 
-const VocabularyTranslateSentences = () => {
+const GrammarTranslateSentences = () => {
   const [dataTest, setDataTest] = useState([]);
   const [dataTest2, setDataTest2] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -219,34 +219,21 @@ const VocabularyTranslateSentences = () => {
     setBtnValue(false);
     setInput(true);
     var str = document.getElementById("input-value").value;
-
-    //Viet hoa chu dau cua tu//
-
-    const firstLetter = word.charAt(0);
+    const firstLetter = str.charAt(0);
 
     const firstLetterCap = firstLetter.toUpperCase();
 
-    const remainingLetters = word.slice(1);
+    const remainingLetters = str.slice(1);
 
     const capitalizedWord = firstLetterCap + remainingLetters;
-
-    //Viet hoa chu dau tu can check//
-
-    const firstLetterCheck = str.charAt(0);
-
-    const firstLetterCapCheck = firstLetterCheck.toUpperCase();
-
-    const remainingLettersCheck = str.slice(1);
-
-    const capitalizedWordCheck = firstLetterCapCheck + remainingLettersCheck;
-    // if (example_1 === capitalizedWord) {
-    //   setCheckResult("✓");
-    //   setCheckResultText("CORRECT");
-    //   setCorrect(true);
-    // } else {
-    //   setCheckResult("✕");
-    //   setCheckResultText("WRONG");
-    // }
+    if (example_1 === capitalizedWord) {
+      setCheckResult("✓");
+      setCheckResultText("CORRECT");
+      setCorrect(true);
+    } else {
+      setCheckResult("✕");
+      setCheckResultText("WRONG");
+    }
 
     function words(s) {
       return s.match(/\S+/g);
@@ -271,8 +258,8 @@ const VocabularyTranslateSentences = () => {
       return marked;
     }
 
-    let a = words(capitalizedWord);
-    let b = words(capitalizedWordCheck);
+    let a = words(example_1);
+    let b = words(capitalizedWord);
 
     // Mark the words in a which are different in b.
     setAMarked(markWords(a, b).join(" "));
@@ -352,7 +339,7 @@ const VocabularyTranslateSentences = () => {
                     />
                   ) : (
                     <div className="sentencesVn-suggest">
-                      <div className="sentencesVn">{meaning}</div>
+                      <div className="sentencesVn">{example_1_vn}</div>
                       <textarea
                         id="input-value"
                         value={strValue}
@@ -537,4 +524,4 @@ const VocabularyTranslateSentences = () => {
   );
 };
 
-export default VocabularyTranslateSentences;
+export default GrammarTranslateSentences;
