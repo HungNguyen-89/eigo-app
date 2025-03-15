@@ -37,7 +37,10 @@ const PopUp = () => {
             <Route path="/flashcards/:id" element={<ExamPageSingle />} />
             <Route path="/flashcards/data/:id" element={<FlashCard />} />
             <Route path="/:id" element={<Grammar />} />
-            <Route path="/data/:id" element={<GrammarTranslateSentences />} />
+            <Route
+              path="/grammar/data/:id"
+              element={<GrammarTranslateSentences />}
+            />
             <Route
               path="/vocabulary-translate-sentences/:id"
               element={<VocabularyPageSingle />}

@@ -55,7 +55,7 @@ const VocabularyPageSingle = () => {
                     <button className="examp-page-single-item-btn">
                       <Link
                         className="heading-links-item"
-                        to={`/vocabulary-translate-sentences/data/${content.link}`}
+                        to={`/grammar/data/${content.link}`}
                       >
                         <span className="heading-links-item-icon">
                           <GiNotebook />
