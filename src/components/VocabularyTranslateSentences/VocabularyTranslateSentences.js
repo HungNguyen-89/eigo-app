@@ -347,12 +347,12 @@ const VocabularyTranslateSentences = () => {
                 <div className="sentencesEn-container">
                   {input ? (
                     <div
-                      className="sentencesEnInput"
+                      className="vocabulary-sentencesEnInput"
                       dangerouslySetInnerHTML={{ __html: bMarked }}
                     />
                   ) : (
                     <div className="sentencesVn-suggest">
-                      <div className="sentencesVn">{meaning}</div>
+                      <div className="vocabulary-sentencesVn">{meaning}</div>
                       <textarea
                         id="input-value"
                         value={strValue}
@@ -471,8 +471,9 @@ const VocabularyTranslateSentences = () => {
               <button className="buttonPlay-icon" onClick={() => Repeat()}>
                 <img alt="" src="https://i.imgur.com/oWc5Idu.png" />
               </button>
-              <span className="buttonPlay-title">Repeat</span>
-            </div> */}
+       
+              <span className="buttonPlay-tite">Repeat</spa>
+           </div> */}
 
             <div className={`buttonPlay ${activeNextBtn ? "hiddenBtn" : ""}`}>
               <button
