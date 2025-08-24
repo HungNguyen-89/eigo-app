@@ -50,7 +50,7 @@ body {
   .vocabularyTranslateFrontSide {
     margin: auto;
     width: 600px;
-    min-height: 415px;
+    min-height: 455px;
     position: relative;
     backface-visibility: hidden;
     z-index: 10;
@@ -352,7 +352,7 @@ body {
     .vocabularyTranslateFrontSide {
       margin: auto;
       width: 100%;
-      min-height: 415px;
+      min-height: 455px;
       position: relative;
       backface-visibility: hidden;
       z-index: 10;
@@ -383,7 +383,6 @@ body {
             }
 
             textarea {
-              
               width: 100%;
               font-size: 18px;
               min-height: 290px;
