@@ -23,6 +23,10 @@ export const routes = [
         link: "/vocabulary-translate-sentences/adv",
       },
       {
+        name: "Adjective",
+        link: "/vocabulary-translate-sentences/adj",
+      },
+      {
         name: "Phrasal verb",
         link: "/vocabulary-translate-sentences/phrasal",
       },

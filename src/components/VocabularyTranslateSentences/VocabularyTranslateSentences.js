@@ -52,6 +52,8 @@ const VocabularyTranslateSentences = () => {
       setCurrentCase("verb");
     } else if (id.includes("adv")) {
       setCurrentCase("adv");
+    } else if (id.includes("adj")) {
+      setCurrentCase("adj");
     } else if (id.includes("phrasal")) {
       setCurrentCase("phrasal");
     } else if (id.includes("business")) {
