@@ -260,7 +260,7 @@ const GrammarTranslateSentences = () => {
       return marked;
     }
 
-    let a = words(example_1);
+    let a = words(phonetic);
     let b = words(capitalizedWord);
 
     // Mark the words in a which are different in b.
