@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Noto+Sans+JP:wght@100;300;400;500&family=Poppins:wght@100;200;300;400;600;700&family=Roboto:wght@100;300;400;500;700&display=swap");
+
+.exam-page-single-container {
+  padding: 15px 9%;
+  display: flex;
+  flex-direction: column;
+  font-family: "Noto Sans JP", sans-serif;
+  min-height: calc(100vh - 140px);
+
+  .exam-page-single-header {
+    display: flex;
+    width: 100%;
+    border-bottom: #001a66 solid 1px;
+
+    .exam-page-single-title {
+      display: flex;
+      align-items: center;
+      background-color: #001a66;
+      font-size: 22px;
+      color: white;
+      padding: 5px 20px;
+      gap: 10px;
+
+      .exam-page-single-title-icon {
+        display: flex;
+        align-items: center;
+        font-size: 30px;
+      }
+    }
+  }
+
+  .exam-page-single-items {
+    display: flex;
+    flex-direction: column;
+    padding: 5px 15px;
+    margin-bottom: 20px;
+
+    .exam-page-single-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: #001a66 solid 1px;
+      padding: 8px 10px;
+
+      .exam-page-single-item-name {
+        font-size: 16px;
+      }
+
+      .examp-page-single-item-btn-kanji {
+        background-color: transparent;
+
+        .heading-links-item {
+          display: flex;
+          align-items: center;
+          background-color: #00c660;
+          //  border: solid #00c660 3px;
+
+          color: white;
+          padding: 5px 15px;
+          font-size: 16px;
+          // font-weight: 500;
+          border-radius: 5px;
+          font-family: "Noto Sans JP", sans-serif;
+          gap: 5px;
+          cursor: pointer;
+
+          .heading-links-item-icon {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+          }
+
+          .button-name {
+            font-size: 14px;
+          }
+
+          &:hover {
+            background-color: #ff566c;
+            //color: #001a66;
+          }
+        }
+      }
+    }
+  }
+}
+
+.loading-container{
+  display: flex;
+  justify-content: center;
+  min-height: calc(100vh - 130px);
+}
+
+@media (max-width: 600px) {
+  .exam-page-single-container {
+    padding: 15px 5%;
+
+    .exam-page-single-header {
+      border-bottom: none;
+      display: block;
+      text-align: center;
+
+      .exam-page-single-title {
+        font-size: 22px;
+        //padding: 10px 15px;
+      }
+    }
+
+    .exam-page-single-items {
+      .exam-page-single-item {
+        .exam-page-single-item-name {
+          font-size: 16px;
+        }
+
+        .examp-page-single-item-btn-kanji {
+          .heading-links-item {
+            font-size: 16px;
+
+            .heading-links-item-icon {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

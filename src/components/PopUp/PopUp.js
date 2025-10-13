@@ -15,6 +15,8 @@ import VocabularyTranslateSentences from "../VocabularyTranslateSentences/Vocabu
 import Dictionary from "../Dictionary";
 import Grammar from "../Grammar/Grammar";
 import GrammarTranslateSentences from "../GrammarTranslateSentences/GrammarTranslateSentences";
+import Kanji from "../Kanji/Kanji";
+import KanjiTranslateSentences from "../KanjiTranslateSentences/KanjiTranslateSentences";
 
 const PopUp = () => {
   const [popup, setPop] = useState(true);
@@ -36,7 +38,12 @@ const PopUp = () => {
             <Route path="/de-thi/:id" element={<ExamPageAll />} />
             <Route path="/flashcards/:id" element={<ExamPageSingle />} />
             <Route path="/flashcards/data/:id" element={<FlashCard />} />
-            <Route path="/:id" element={<Grammar />} />
+            <Route path="/kanji/:id" element={<Kanji />} />
+            <Route
+              path="/kanji/data/:id"
+              element={<KanjiTranslateSentences />}
+            />
+            <Route path="grammar/:id" element={<Grammar />} />
             <Route
               path="/grammar/data/:id"
               element={<GrammarTranslateSentences />}
@@ -51,6 +58,7 @@ const PopUp = () => {
             />
             <Route path="/dictionary/search/:id" element={<Dictionary />} />
           </Routes>
+
           <Footer />
         </div>
       ) : (

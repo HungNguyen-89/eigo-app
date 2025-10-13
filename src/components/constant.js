@@ -36,14 +36,19 @@ export const routes = [
         link: "/vocabulary-translate-sentences/business",
       },
       // {
-      //   name: "Grammar",
-      //   link: "/vocabulary-translate-sentences/grammar",
+      //   name: "Kanji",
+      //   link: "/vocabulary-translate-sentences/kanji",
       // },
     ],
   },
   {
     name: "Grammar",
-    link: "/grammar",
+    link: "/grammar/grammar",
+    subMenu: false,
+  },
+  {
+    name: "Kanji",
+    link: "/kanji/kanji",
     subMenu: false,
   },
   // {
