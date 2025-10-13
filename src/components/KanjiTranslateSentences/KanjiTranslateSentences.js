@@ -223,7 +223,7 @@ const GrammarTranslateSentences = () => {
     var str = document.getElementById("input-value").value;
     const firstLetter = str.charAt(0);
 
-    const firstLetterCap = firstLetter.toUpperCase();
+    const firstLetterCap = firstLetter.toLowerCase();
 
     const remainingLetters = str.slice(1);
 
@@ -284,7 +284,7 @@ const GrammarTranslateSentences = () => {
 
     const firstLetter = str.charAt(0);
 
-    const firstLetterCap = firstLetter.toUpperCase();
+    const firstLetterCap = firstLetter.toLowerCase();
 
     const remainingLetters = str.slice(1);
 
